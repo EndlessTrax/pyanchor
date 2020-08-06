@@ -12,7 +12,7 @@ class LinkResults():
 
     def __str__(self) -> str:
         """TODO:"""
-        return 
+        return f'All links for {self.base_url}'
 
 
     def check_link_for_http_scheme(self, href: str) -> str:
