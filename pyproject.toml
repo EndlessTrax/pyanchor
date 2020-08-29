@@ -1,0 +1,11 @@
+[build-system]
+requires = ["flit_core >=2,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.flit.metadata]
+module = "link_checker"
+author = "Ricky White"
+author-email = "ricky@whitelionmedia.com"
+home-page = "https://github.com/EndlessTrax"
+classifiers = ["License :: OSI Approved :: MIT License"]
+
