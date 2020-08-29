@@ -1,13 +1,14 @@
-import pprint
 import typer
 import requests
 from bs4 import BeautifulSoup
+from link_checker import LinkResults
 
-from checker.checker import LinkResults
 
 app = typer.Typer()
 
+
 def print_result(link: dict):
+    """TODO:"""
     for k, v in link.items():
         if v == 200:
             typer.echo(typer.style(f"[ {v} ] - {k}", fg="green"))
@@ -16,13 +17,16 @@ def print_result(link: dict):
 
 
 @app.command()
-def main(url: str, 
-        sitemap: bool = typer.Option(False, '--sitemap', help="Use if URL is a sitemap.xml link"),
-    ):
+def main(
+    url: str,
+    sitemap: bool = typer.Option(
+        False, "--sitemap", help="Use if URL is a sitemap.xml link"
+    ),
+):
     """TODO: """
 
-    if not url.startswith('http'):
-        raise ValueError('Please provide a URL with a valid HTTP scheme')
+    if not url.startswith("http"):
+        raise ValueError("Please provide a URL with a valid HTTP scheme")
 
     if sitemap is True:
         set_of_urls = set()
@@ -38,7 +42,7 @@ def main(url: str,
 
         for _url in set_of_urls:
             link_result = LinkResults(_url).results
-            
+
             for k, v in link_result.items():
                 results[k] = v
 

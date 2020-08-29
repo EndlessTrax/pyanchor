@@ -44,7 +44,7 @@ class LinkResults:
         else:  # This catches any href set to '#'
             return None  # TODO: Deal with ./ or ../ relative links.
 
-    def find_all_atags(self, url: str):  # Returns -> bs4.element.ResultSet
+    def find_all_atags(self, url: str):
         """Find all anchor tags on a given URL.
         
         Args:
