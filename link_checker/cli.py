@@ -1,7 +1,7 @@
 import typer
 import requests
 from bs4 import BeautifulSoup
-from link_checker import LinkResults
+from .link_checker import LinkResults
 
 
 app = typer.Typer()
