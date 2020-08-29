@@ -1,14 +1,14 @@
 import typer
 import requests
 from bs4 import BeautifulSoup
-from .link_checker import LinkResults
+from link_checker import LinkResults
 
 
 app = typer.Typer()
 
 
 def print_result(link: dict):
-    """TODO:"""
+    """Simple utility function to print to terminal"""
     for k, v in link.items():
         if v == 200:
             typer.echo(typer.style(f"[ {v} ] - {k}", fg="green"))
@@ -20,10 +20,12 @@ def print_result(link: dict):
 def main(
     url: str,
     sitemap: bool = typer.Option(
-        False, "--sitemap", help="Use if URL is a sitemap.xml link"
+        False, "--sitemap", help="Use if the URL is a sitemap.xml link"
     ),
 ):
-    """TODO: """
+    """Check for broken links on any given webpage. Pass in a sitemap URL to 
+    check all link on a given website.
+    """
 
     if not url.startswith("http"):
         raise ValueError("Please provide a URL with a valid HTTP scheme")
