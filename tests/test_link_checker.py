@@ -1,8 +1,8 @@
 import pytest
 from typer.testing import CliRunner
 
-from link_checker import app
-from checker.checker import LinkResults
+from link_checker.cli import app
+from link_checker.link_checker import LinkResults
 
 
 runner = CliRunner()
@@ -19,7 +19,7 @@ def test_successful_result_prints():
     """TODO: """
 
     results = runner.invoke(app, ['https://google.com'])
-    assert "200 - https://google.com/services/" in results.output
+    assert "[ 200 ] - https://google.com/services/" in results.output
 
 
 @pytest.fixture
@@ -35,3 +35,4 @@ def test_link_result_class_str(example_object):
 def test_results_is_dict(example_object):
     """TODO:"""
     assert isinstance(example_object.results, dict)
+
