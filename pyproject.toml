@@ -19,5 +19,5 @@ requires-python=">=3.6"
 [tool.flit.metadata.urls]
 Documentation = "https://github.com/EndlessTrax/link-checker/blob/master/README.md"
 
-[tool.flit.entrypoints."pyanchor"]
-pyanchor = "pyanchor.cli:app"
+[tool.flit.scripts]
+pyanchor = "pyanchor.cli"
