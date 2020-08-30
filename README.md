@@ -6,6 +6,22 @@ negative impact on SEO, dead links are an annoyance for any user that clicks on 
 PyAnchor is primarily for checking the HTTP response on all links on a page. You can integrate it
 into your development workflow so that users never see a 404 in the first place.
 
+## Install
+
+PyAnchor requires Python 3.6 and above.
+
+MacOS / Linux:
+
+```shell
+$ python3 -m pip install pyanchor
+```
+
+Windows:
+
+```cmd
+> python -m pip install pyanchor
+```
+
 ## Using the CLI
 
 The CLI can be invoked with the `pyanchor` command. A URL must be provided.
