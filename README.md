@@ -1,4 +1,4 @@
-# PyAnchor (Latest: 0.1.5)
+# PyAnchor
 
 [![PyPI version](https://badge.fury.io/py/pyanchor.svg)](https://badge.fury.io/py/pyanchor) ![GitHub](https://img.shields.io/github/license/endlesstrax/pyanchor) ![black](https://img.shields.io/badge/code%20style-black-000000.svg)
 
