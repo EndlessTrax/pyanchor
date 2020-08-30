@@ -20,4 +20,4 @@ requires-python=">=3.6"
 Documentation = "https://github.com/EndlessTrax/link-checker/blob/master/README.md"
 
 [tool.flit.scripts]
-pyanchor = "pyanchor.cli"
+pyanchor = "pyanchor.cli:app"
