@@ -36,8 +36,8 @@ Example:
 
 ```
 >>> from pyanchor.link_checker import LinkResults
->>>r = LinkResults("https://mysite.com/")
->>>r.results
+>>> r = LinkResults("https://mysite.com/")
+>>> r.results
 {"https://mysite.com/about/": 200, "https://mysite.com/contact/": 200, "https://mysite.com/blog/": 200, ...}
 ```
 
