@@ -6,7 +6,7 @@ build-backend = "flit_core.buildapi"
 module = "pyanchor"
 author = "Ricky White"
 author-email = "ricky@whitelionmedia.com"
-home-page = "https://github.com/EndlessTrax"
+home-page = "https://github.com/EndlessTrax/pyanchor/"
 classifiers = ["License :: OSI Approved :: MIT License"]
 description-file="README.md"
 requires = [
@@ -17,7 +17,8 @@ requires = [
 requires-python=">=3.6"
 
 [tool.flit.metadata.urls]
-Documentation = "https://github.com/EndlessTrax/link-checker/blob/master/README.md"
+Documentation = "https://github.com/EndlessTrax/pyanchor/blob/master/README.md"
+Issues = "https://github.com/EndlessTrax/pyanchor/issues"
 
 [tool.flit.scripts]
 pyanchor = "pyanchor.cli:app"
