@@ -1,8 +1,8 @@
 import pytest
 from typer.testing import CliRunner
 
-from link_checker.cli import app
-from link_checker.link_checker import LinkResults
+from pyanchor.cli import app
+from pyanchor.link_checker import LinkResults
 
 
 runner = CliRunner()
