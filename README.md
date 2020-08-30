@@ -1,4 +1,4 @@
-# PyAnchor
+# PyAnchor (Latest: 0.1.5)
 
 Dead links are an annoyance for websites with an extensive amount of content. A side from the
 negative impact on SEO, dead links are an annoyance for any user that clicks on one.
