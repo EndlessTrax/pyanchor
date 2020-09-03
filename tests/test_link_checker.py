@@ -10,27 +10,27 @@ runner = CliRunner()
 
 def test_exception_on_invalid_url_http_scheme():
     """TODO:"""
-    
-    result = runner.invoke(app, ['google.com'])
+
+    result = runner.invoke(app, ["google.com"])
     assert result.exit_code == 1
 
 
 def test_successful_result_prints():
     """TODO: """
 
-    results = runner.invoke(app, ['https://google.com'])
-    assert "[ 200 ] - https://google.com/services/" in results.output
+    results = runner.invoke(app, ["http://127.0.0.1:5000"])
+    assert "[ 200 ] - http://127.0.0.1:5000/about" in results.output
 
 
 @pytest.fixture
 def example_object():
-    return LinkResults("https://google.com")
+    return LinkResults("http://127.0.0.1:5000")
 
 
 def test_link_result_class_str(example_object):
     """TODO:"""
-    assert str(example_object) == 'All links for https://google.com'
-    
+    assert str(example_object) == "All links for http://127.0.0.1:5000"
+
 
 def test_results_is_dict(example_object):
     """TODO:"""
