@@ -36,6 +36,8 @@ Basic example for a single page:
 
 > Note: all provided URLs must include a valid HTTP scheme.
 
+![Simple Example Gif](/assets/pyanchor-simple-example.gif)
+
 If you want to check all links on a website, and not just a single page, a `sitemap.xml` URL may be
 provided and flagged with `--sitemap`.
 
