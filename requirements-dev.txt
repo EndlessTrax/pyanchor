@@ -9,8 +9,12 @@ chardet==3.0.4
 click==7.1.2
 colorama==0.4.3
 coverage==5.2.1
+docutils==0.16
+flit==2.3.0
+flit-core==2.3.0
 idna==2.10
 iniconfig==1.0.0
+lxml==4.5.2
 more-itertools==8.4.0
 packaging==20.4
 pathspec==0.8.0
@@ -19,6 +23,7 @@ py==1.9.0
 pyparsing==2.4.7
 pytest==6.0.0
 pytest-cov==2.10.0
+pytoml==0.1.21
 regex==2020.7.14
 requests==2.24.0
 six==1.15.0
