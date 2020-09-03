@@ -82,8 +82,6 @@ class LinkResults:
 
             if parsed_url is not None:
                 results[parsed_url] = requests.get(parsed_url).status_code
-            else:
-                pass
 
         return results
 
