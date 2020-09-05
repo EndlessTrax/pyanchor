@@ -2,8 +2,8 @@
 
 The LinkResults class expects a URL as it's only argument. It will return a 
 dictionary of all links on the given html page which is stores in the object.results 
-attribute. The returning dictionary consists of the link (dict key) and the http 
-response (dict value).
+attribute. The returning dictionary consists of the link (dict value) and the http 
+response (dict key).
 
     Typical usage example:
 
@@ -16,7 +16,11 @@ from bs4 import BeautifulSoup
 
 class LinkResults:
     def __init__(self, url: str):
-        self.base_url = url
+        if url.endswith("/"):
+            self.base_url = url
+        else:
+            self.base_url = url + "/"
+
         self.all_atags = self.find_all_atags(self.base_url)
         self.results = self.build_results_dictionary()
 
@@ -39,7 +43,7 @@ class LinkResults:
         if href.startswith(self.base_url):
             return href
         elif href.startswith("/"):
-            href = self.base_url + href
+            href = self.base_url + href.lstrip("/")
             return href
         else:  # This catches any href set to '#'
             return None  # TODO: Deal with ./ or ../ relative links.
@@ -61,31 +65,31 @@ class LinkResults:
             soup = BeautifulSoup(r.content, "html.parser")
             return soup.find_all("a")
 
-        else:
-            # TODO: Find better exception type/create custom Exception
-            raise Exception(f"The requested page is unavailable -> {url}")
-
     def build_results_dictionary(self) -> dict:
-        """Build the final results dictionary. 
+        """Build the final results dictionary.
         
         Once all_tags has been populated, the final results dictionary is build by 
         testing each link. 
 
         Returns:
-            A dictionary with the key = the URL, and the value = the HTTP response.
+            A dictionary with the key = the HTTP response, 
+            and the value = a List of URLs that achieved that response code.
         """
 
         results = dict()
-        for tag in self.all_atags:
-            href = tag.get("href")
-            parsed_url = self.check_link_for_http_scheme(href)
 
-            if parsed_url is not None:
-                results[parsed_url] = requests.get(parsed_url).status_code
+        try:
+            for tag in self.all_atags:
+                href = tag.get("href")
+                parsed_url = self.check_link_for_http_scheme(href)
+                if parsed_url is not None:
+                    parsed_url_status_code = requests.get(parsed_url).status_code
+
+                    if parsed_url_status_code in results:
+                        results[parsed_url_status_code].append(parsed_url)
+                    else:
+                        results[parsed_url_status_code] = [parsed_url]
+        except:
+            pass
 
         return results
-
-    # @property
-    # def check_anchor_tags_attributes(self, tags):
-    #     """TODO:"""
-    #     return
