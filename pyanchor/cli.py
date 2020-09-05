@@ -1,7 +1,7 @@
 import typer
 import requests
 from bs4 import BeautifulSoup
-from pyanchor.link_checker import LinkResults
+from link_checker import LinkResults
 
 
 app = typer.Typer()
@@ -9,6 +9,7 @@ app = typer.Typer()
 
 def print_results(links: dict):
     """Simple utility function to print to terminal"""
+    num_of_failed_links = 0
     for k, v in links.items():
         if k == 200:
             for link in v:
@@ -16,9 +17,15 @@ def print_results(links: dict):
         elif k == 500:
             for link in v:
                 typer.echo(typer.style(f"[ {k} ] - {link}", fg="red"))
+                num_of_failed_links += 1
         else:
             for link in v:
                 typer.echo(typer.style(f"[ {k} ] - {link}", fg="yellow"))
+                num_of_failed_links += 1
+
+    typer.echo("========================")
+    typer.echo(f"TOTAL LINKS CHECKED: {len(links[200]) + num_of_failed_links}")
+    typer.echo(f"FAILED: {num_of_failed_links}")
 
 
 @app.command()
