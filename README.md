@@ -1,6 +1,8 @@
 # PyAnchor
 
-[![PyPI version](https://badge.fury.io/py/pyanchor.svg)](https://badge.fury.io/py/pyanchor) ![GitHub](https://img.shields.io/github/license/endlesstrax/pyanchor) ![black](https://img.shields.io/badge/code%20style-black-000000.svg)
+[![PyPI version](https://badge.fury.io/py/pyanchor.svg)](https://badge.fury.io/py/pyanchor)
+![GitHub](https://img.shields.io/github/license/endlesstrax/pyanchor)
+![black](https://img.shields.io/badge/code%20style-black-000000.svg)
 
 Dead links are an annoyance for websites with an extensive amount of content. A side from the
 negative impact on SEO, dead links are an annoyance for any user that clicks on one.
@@ -58,11 +60,11 @@ Example:
 >>> from pyanchor.link_checker import LinkResults
 >>> r = LinkResults("https://mysite.com/")
 >>> r.results
-{"https://mysite.com/about/": 200, "https://mysite.com/contact/": 200, "https://mysite.com/blog/": 200, ...}
+{200: ["https://mysite.com/about/", "https://mysite.com/contact/"], 500: ["https://mysite.com/doh!/"]}
 ```
 
-As you can see the `results` attribute is a dictionary containing all links with their HTTP response
-code.
+As you can see the `results` attribute is a dictionary containing all response codes returned as the
+dictionary key, with a list of URLS that achieve that response code as the dictionary value.
 
 ## What's next?
 
