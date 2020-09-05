@@ -7,13 +7,18 @@ from pyanchor.link_checker import LinkResults
 app = typer.Typer()
 
 
-def print_result(link: dict):
+def print_results(links: dict):
     """Simple utility function to print to terminal"""
-    for k, v in link.items():
-        if v == 200:
-            typer.echo(typer.style(f"[ {v} ] - {k}", fg="green"))
+    for k, v in links.items():
+        if k == 200:
+            for link in v:
+                typer.echo(typer.style(f"[ {k} ] - {link}", fg="green"))
+        elif k == 500:
+            for link in v:
+                typer.echo(typer.style(f"[ {k} ] - {link}", fg="red"))
         else:
-            typer.echo(typer.style(f"[ {v} ] - {k}", fg="yellow"))
+            for link in v:
+                typer.echo(typer.style(f"[ {k} ] - {link}", fg="yellow"))
 
 
 @app.command()
@@ -43,16 +48,12 @@ def main(
                 set_of_urls.add(sitemap_link.text)
 
         for _url in set_of_urls:
-            link_result = LinkResults(_url).results
-
-            for k, v in link_result.items():
-                results[k] = v
-
-        print_result(results)
+            link_results = LinkResults(_url).results
+            print_results(link_results)
 
     else:
         results = LinkResults(url).results
-        print_result(results)
+        print_results(results)
 
 
 if __name__ == "__main__":
