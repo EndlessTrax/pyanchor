@@ -29,5 +29,10 @@ def five_hundred():
     return render_template("error.html", status_code=500), 500
 
 
+@app.route("/sitemap.xml")
+def sitemap():
+    return render_template('sitemap.xml')
+
+
 if __name__ == "__main__":
     app.run()
