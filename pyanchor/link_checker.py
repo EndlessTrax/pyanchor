@@ -56,8 +56,6 @@ class LinkResults:
 
         Returns:
             A bs4.element.ResultSet object
-        Raises:
-            An exception is the page returns anything other than a 200 HTTP response
         """
 
         r = requests.get(url)
