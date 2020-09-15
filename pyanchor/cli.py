@@ -10,17 +10,17 @@ app = typer.Typer()
 def print_results(links: dict):
     """Simple utility function to print to terminal"""
     num_of_failed_links = 0
-    for k, v in links.items():
-        if k == 200:
-            for link in v:
-                typer.echo(typer.style(f"[ {k} ] - {link}", fg="green"))
-        elif k == 500:
-            for link in v:
-                typer.echo(typer.style(f"[ {k} ] - {link}", fg="red"))
+    for http_code, url_list in links.items():
+        if http_code == 200:
+            for link in url_list:
+                typer.echo(typer.style(f"[ {http_code} ] - {link}", fg="green"))
+        elif http_code == 500:
+            for link in url_list:
+                typer.echo(typer.style(f"[ {http_code} ] - {link}", fg="red"))
                 num_of_failed_links += 1
         else:
-            for link in v:
-                typer.echo(typer.style(f"[ {k} ] - {link}", fg="yellow"))
+            for link in url_list:
+                typer.echo(typer.style(f"[ {http_code} ] - {link}", fg="yellow"))
                 num_of_failed_links += 1
 
     typer.echo("========================")
