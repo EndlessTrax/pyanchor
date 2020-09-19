@@ -2,7 +2,7 @@
 
 [![PyPI version](https://badge.fury.io/py/pyanchor.svg)](https://badge.fury.io/py/pyanchor)
 ![GitHub](https://img.shields.io/github/license/endlesstrax/pyanchor)
-![black](https://img.shields.io/badge/code%20style-black-000000.svg)
+![Black](https://img.shields.io/badge/code%20style-black-000000.svg)
 
 Dead links are an annoyance for websites with an extensive amount of content. A side from the
 negative impact on SEO, dead links are an annoyance for any user that clicks on one.
@@ -28,7 +28,7 @@ Windows:
 
 ## Using the CLI
 
-The CLI can be invoked with the `pyanchor` command. A URL must be provided.
+The CLI can be invoked with the `pyanchor` command. A URL **must** be provided.
 
 Basic example for a single page:
 
@@ -38,8 +38,6 @@ Basic example for a single page:
 
 > Note: all provided URLs must include a valid HTTP scheme.
 
-![Simple Example Gif](/assets/pyanchor-simple-example.gif)
-
 If you want to check all links on a website, and not just a single page, a `sitemap.xml` URL may be
 provided and flagged with `--sitemap`.
 
@@ -48,6 +46,15 @@ Example:
 ```shell
 > pyanchor https://mysite.com/sitemap.xml --sitemap
 ```
+
+By default, successful requests are not printed to the terminal. To see all urls with a `200`
+response add the `--verbose` flag.
+
+```shell
+> pyanchor https://mysite.com/sitemap.xml --sitemap --verbose
+```
+
+![Example Gif](/assets/example-sitemap-verbose.gif)
 
 ## But wait, there's more...
 
@@ -63,8 +70,8 @@ Example:
 {200: ["https://mysite.com/about/", "https://mysite.com/contact/"], 500: ["https://mysite.com/doh!/"]}
 ```
 
-As you can see the `results` attribute is a dictionary containing all response codes returned as the
-dictionary key, with a list of URLS that achieve that response code as the dictionary value.
+As you can see the `results` attribute is a dictionary containing all response codes returned as a
+dictionary key, with a list of URLs that achieve that response code as the dictionary value.
 
 ## What's next?
 
