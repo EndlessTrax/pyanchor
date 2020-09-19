@@ -19,7 +19,7 @@ def test_exception_on_invalid_url_http_scheme():
 
 
 def test_successful_result_prints():
-    results = runner.invoke(app, ["http://127.0.0.1:5000/"])
+    results = runner.invoke(app, ["http://127.0.0.1:5000/", "--verbose"])
     assert "[ 200 ] - http://127.0.0.1:5000/about" in results.output
 
 
@@ -37,7 +37,9 @@ def test_results_is_dict(example_object):
 
 
 def test_sitemap_successful_result_prints():
-    results = runner.invoke(app, ["http://127.0.0.1:5000/sitemap.xml", "--sitemap"])
+    results = runner.invoke(
+        app, ["http://127.0.0.1:5000/sitemap.xml", "--sitemap", "--verbose"]
+    )
     assert "[ 200 ] - http://127.0.0.1:5000/about" in results.output
 
 
