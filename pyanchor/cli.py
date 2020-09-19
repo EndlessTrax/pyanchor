@@ -1,33 +1,38 @@
-from os import link
 import typer
 import requests
 from bs4 import BeautifulSoup
-from link_checker import LinkResults
+from pyanchor.link_checker import LinkResults
 
 
 app = typer.Typer()
 
 
-def print_results(links: dict, verbose: bool):
+def print_results(links: dict, verbose: bool) -> int:
     """Simple utility function to print to terminal"""
+    num_of_successful_links = 0
     num_of_failed_links = 0
     for http_code, url_list in links.items():
-        if http_code == 200 and verbose == True:
-            for link in url_list:
-                typer.echo(typer.style(f"[ {http_code} ] - {link}", fg="green"))
-        
-        if http_code == 500:
-            for link in url_list:
-                typer.echo(typer.style(f"[ {http_code} ] - {link}", fg="red"))
+        if http_code == 200:
+            for url in url_list:
+                num_of_successful_links += 1
+                if verbose is True:
+                    typer.echo(typer.style(f"[ {http_code} ] - {url}", fg="green"))
+        elif http_code == 500:
+            for url in url_list:
+                typer.echo(typer.style(f"[ {http_code} ] - {url}", fg="red"))
                 num_of_failed_links += 1
         else:
-            for link in url_list:
-                typer.echo(typer.style(f"[ {http_code} ] - {link}", fg="yellow"))
+            for url in url_list:
+                typer.echo(typer.style(f"[ {http_code} ] - {url}", fg="yellow"))
                 num_of_failed_links += 1
 
+    return num_of_successful_links, num_of_failed_links
+
+
+def print_totals(success:int, failed:int):
     typer.echo("========================")
-    typer.echo(f"TOTAL LINKS CHECKED: {len(links[200]) + num_of_failed_links}")
-    typer.echo(f"FAILED: {num_of_failed_links}")
+    typer.echo(f"TOTAL LINKS CHECKED: {success + failed}")
+    typer.echo(f"FAILED: {failed}")
 
 
 @app.command()
@@ -40,7 +45,7 @@ def main(
         False, "--verbose", help="By default all 200 responses will be hidden from the final output. Use verbose to view ALL results"
     ),
 ):
-    """Check for broken links on any given webpage. Pass in a sitemap URL to 
+    """Check for broken links on any given web page. Pass in a sitemap URL to
     check all link on a given website.
     """
 
@@ -65,13 +70,19 @@ def main(
             if len(link_results) > 0:
                 all_results.append(link_results)
         
-        
+        success_totals = 0
+        failed_totals = 0
+        for results_dict in all_results:
+            _success, _failed = print_results(results_dict, verbose=verbose)
+            success_totals =  success_totals + _success
+            failed_totals = failed_totals + _failed
 
-        # print_results(all_results, verbose=verbose)
+        print_totals(success_totals, failed_totals)
 
     else:
         results = LinkResults(url).results
-        print_results(results, verbose=verbose)
+        success_totals, failed_totals = print_results(results, verbose=verbose)
+        print_totals(success_totals, failed_totals)
 
 
 if __name__ == "__main__":
