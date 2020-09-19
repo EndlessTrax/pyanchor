@@ -13,6 +13,16 @@
         <changefreq>weekly</changefreq>
     </url>
     <url>
+        <loc>http://127.0.0.1:5000/about/link-1</loc>
+        <lastmod>2020-09-03</lastmod>
+        <changefreq>weekly</changefreq>
+    </url>
+    <url>
+        <loc>http://127.0.0.1:5000/about/link-2</loc>
+        <lastmod>2020-09-03</lastmod>
+        <changefreq>weekly</changefreq>
+    </url>
+    <url>
         <loc>http://127.0.0.1:5000/contact</loc>
         <lastmod>2020-09-03</lastmod>
         <changefreq>weekly</changefreq>

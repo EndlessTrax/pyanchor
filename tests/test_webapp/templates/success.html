@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Success Page</title>
-</head>
-<body>
-  
-  <h1>{{ name }} Page</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Success Page</title>
+  </head>
+  <body>
+    <h1>{{ name }} Page</h1>
 
-</body>
+    {% if links %} 
+      {% for link in links %} 
+        <a href="{{ link }}">LINK</a>
+      {% endfor %} 
+    {% endif %}
+  </body>
 </html>

@@ -9,9 +9,20 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/about")
+@app.route("/about/")
 def about():
-    return render_template("success.html", name="About")
+    sub_links = ["/link-1", "/link-2"]
+    return render_template("success.html", name="About", links=sub_links)
+
+
+@app.route("/about/link-1")
+def about_link_1():
+    return render_template("success.html", name="About Link 1")
+
+
+@app.route("/about/link-2")
+def about_link_2():
+    return render_template("success.html", name="About Link 2")
 
 
 @app.route("/contact")
