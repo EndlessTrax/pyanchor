@@ -1,6 +1,3 @@
-from time import sleep
-import subprocess
-
 import pytest
 
 from pyanchor.link_checker import LinkResults
