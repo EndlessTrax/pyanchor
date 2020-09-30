@@ -60,8 +60,10 @@ class LinkResults:
                 return href
             else:
                 return None
+        elif href.startswith("http"):
+            return href
         else:
-            return None
+            return self.base_url + href #Some websites such as https://www.debian.org/ have relative urls that don't start with a /
 
     def find_all_atags(self, url: str):
         """Find all anchor tags on a given URL.
