@@ -42,18 +42,24 @@ class LinkResults:
 
         if href.startswith(self.base_url):
             return href
-        elif href.startswith("/"):
-            href = self.base_url + href.lstrip("/")
-            return href
+        
         elif href.startswith("./"):
             import re   #using re.sub to remove all instances ./
-            href=re.sub("./","",href)
+            href=self.base_url +re.sub("./","",href)
             return href
 
         elif href.startswith("../"):
             import re #using re.sub to remove all instances of ../
-            href=re.sub("../","",href)
+            href=self.base_url + re.sub("../","",href)
             return href
+
+        elif href.startswith("#"):
+            if "#" not in self.base_url:
+                hrefList=list(self.base_url) '''if relative link starts with #, checks if # already exists in base url. I not, then adds the # followed by the relative url to base url'''
+                href= "".join(hrefList.pop(-1)) + href
+                return href
+            else:
+                return None
         else:
             return None
 
