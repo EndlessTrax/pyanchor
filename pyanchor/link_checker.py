@@ -45,8 +45,17 @@ class LinkResults:
         elif href.startswith("/"):
             href = self.base_url + href.lstrip("/")
             return href
-        else:  # This catches any href set to '#'
-            return None  # TODO: Deal with ./ or ../ relative links.
+        elif href.startswith("./"):
+            import re   #using re.sub to remove all instances ./
+            href=re.sub("./","",href)
+            return href
+
+        elif href.startswith("../"):
+            import re #using re.sub to remove all instances of ../
+            href=re.sub("../","",href)
+            return href
+        else:
+            return None
 
     def find_all_atags(self, url: str):
         """Find all anchor tags on a given URL.
