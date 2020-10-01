@@ -43,6 +43,9 @@ class LinkResults:
         if href.startswith(self.base_url):
             return href
         
+        elif href.startswith("/"):
+            href = self.base_url + href.lstrip("/")
+        
         elif href.startswith("./"):
             import re   #using re.sub to remove all instances ./
             href=self.base_url +re.sub("./","",href)
@@ -55,13 +58,13 @@ class LinkResults:
 
         elif href.startswith("#"):
             if "#" not in self.base_url:
-                hrefList=list(self.base_url) '''if relative link starts with #, checks if # already exists in base url. I not, then adds the # followed by the relative url to base url'''
+                hrefList=list(self.base_url) #if relative link starts with #, checks if # already exists in base url. I not, then adds the # followed by the relative url to base url
                 href= "".join(hrefList.pop(-1)) + href
                 return href
             else:
                 return None
         elif href.startswith("http"):
-            return href
+            return None  #external links
         else:
             return self.base_url + href #Some websites such as https://www.debian.org/ have relative urls that don't start with a /
 
