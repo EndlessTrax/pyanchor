@@ -78,7 +78,7 @@ dictionary key, with a list of URLs that achieve that response code as the dicti
 The plan for PyAnchor is to add further analysis of anchor tags, such as missing attributes and
 security considerations.
 
-After that... who knows? 🤷‍♂️
+After that, who knows? 🤷‍♂️
 
 ## Feedback
 
