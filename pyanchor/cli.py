@@ -8,7 +8,14 @@ app = typer.Typer()
 
 
 def print_results(links: dict, verbose: bool) -> int:
-    """Simple utility function to print to terminal"""
+    """Simple utility function to print to terminal
+    
+    Args:
+        Dictionary of links from LinkResults.results
+    Returns:
+        Two integers for the number of successful and unsuccessful links checked.
+    """
+
     num_of_successful_links = 0
     num_of_failed_links = 0
     for http_code, url_list in links.items():
@@ -30,6 +37,7 @@ def print_results(links: dict, verbose: bool) -> int:
 
 
 def print_totals(success:int, failed:int):
+    """Prints results to terminal"""
     typer.echo("========================")
     typer.echo(f"TOTAL LINKS CHECKED: {success + failed}")
     typer.echo(f"FAILED: {failed}")
