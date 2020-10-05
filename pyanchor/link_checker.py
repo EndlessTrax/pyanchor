@@ -14,7 +14,8 @@ import requests
 from bs4 import BeautifulSoup
 
 
-class LinkResults:
+class AllTags:
+
     def __init__(self, url: str):
         if url.endswith("/"):
             self.base_url = url
@@ -22,10 +23,31 @@ class LinkResults:
             self.base_url = url + "/"
 
         self.all_atags = self.find_all_atags(self.base_url)
-        self.results = self.build_results_dictionary()
 
     def __str__(self) -> str:
         return f"All links for {self.base_url}"
+
+    def find_all_atags(self, url: str):
+        """Find all anchor tags on a given URL.
+        
+        Args:
+            url: A URL string
+
+        Returns:
+            A bs4.element.ResultSet object
+        """
+
+        r = requests.get(url)
+        if r.status_code == 200:
+            soup = BeautifulSoup(r.content, "html.parser")
+            return soup.find_all("a")
+
+
+class LinkResults(AllTags):
+    def __init__(self, url: str):
+        super().__init__(url)
+        self.results = self.build_results_dictionary()
+
 
     def check_link_for_http_scheme(self, href: str) -> str:
         """Checks a link for http scheme.
@@ -47,21 +69,6 @@ class LinkResults:
             return href
         else:  # This catches any href set to '#'
             return None  # TODO: Deal with ./ or ../ relative links.
-
-    def find_all_atags(self, url: str):
-        """Find all anchor tags on a given URL.
-        
-        Args:
-            url: A URL string
-
-        Returns:
-            A bs4.element.ResultSet object
-        """
-
-        r = requests.get(url)
-        if r.status_code == 200:
-            soup = BeautifulSoup(r.content, "html.parser")
-            return soup.find_all("a")
 
     def build_results_dictionary(self) -> dict:
         """Build the final results dictionary.
@@ -91,3 +98,33 @@ class LinkResults:
             pass
 
         return results
+
+
+class LinkAnalysis(AllTags):
+    """
+    Check the anchor tag for:
+        taget attr of any kind:
+            check to see if rel="noreferrer noopener"
+        missing Title attr
+        Check for obsolete attrs
+            charset
+            coords
+            name
+            rev 
+            shape
+
+    Print output to user
+    """
+
+    def __init__(self, url: str):
+        super().__init__(url)
+
+
+    def obsolete_attrs(self):
+        pass
+
+    def missing_attrs(self):
+        pass
+
+    def unsafe_attrs(self):
+        pass
