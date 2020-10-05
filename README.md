@@ -3,6 +3,7 @@
 [![PyPI version](https://badge.fury.io/py/pyanchor.svg)](https://badge.fury.io/py/pyanchor)
 ![GitHub](https://img.shields.io/github/license/endlesstrax/pyanchor)
 ![Black](https://img.shields.io/badge/code%20style-black-000000.svg)
+![CodeCov](https://codecov.io/gh/EndlessTrax/pyanchor/branch/master/graph/badge.svg)
 ![Build](https://travis-ci.org/EndlessTrax/pyanchor.svg?branch=master)
 
 Dead links are an annoyance for websites with an extensive amount of content. A side from the
