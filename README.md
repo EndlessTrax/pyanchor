@@ -95,4 +95,4 @@ If you would like to show your support for the project, I would be very grateful
 to a charity close to my heart, [Walk AS One](https://walkasone.org/donate/).
 
 And if you would prefer to donate to me personally instead,
-[buy me a coffee](https://ko-fi.com/endlesstrax)? 🤓
+[you can sponsor me on Github](https://github.com/sponsors/EndlessTrax)? 🤓
