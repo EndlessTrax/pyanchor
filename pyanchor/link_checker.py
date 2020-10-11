@@ -118,10 +118,28 @@ class LinkAnalysis(AllTags):
 
     def __init__(self, url: str):
         super().__init__(url)
+        self.obsolete_attrs = self.obsolete_attrs(self.all_atags)
 
 
-    def obsolete_attrs(self):
-        pass
+    def obsolete_attrs(self, links):
+        OBSOLETE_ATTRS = ('charset', 'coords', 'name', 'rev', 'shape')
+        
+        return_dict = dict()
+        for link in links:
+            obs_link_attrs = []
+            for attribute in OBSOLETE_ATTRS:
+                if link.get(attribute):
+                    obs_link_attrs.append(attribute)
+
+            if len(obs_link_attrs) > 0:
+                href = link["href"]
+                if href in return_dict:
+                    return_dict[href].append(*obs_link_attrs)
+                else: 
+                    return_dict[href] = obs_link_attrs
+        
+        return return_dict
+
 
     def missing_attrs(self):
         pass
