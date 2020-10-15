@@ -37,5 +37,15 @@
         <lastmod>2020-09-03</lastmod>
         <changefreq>weekly</changefreq>
     </url>
+     <url>
+        <loc>http://127.0.0.1:5000/rel</loc>
+        <lastmod>2020-09-03</lastmod>
+        <changefreq>weekly</changefreq>
+    </url>
+     <url>
+        <loc>http://127.0.0.1:5000/rel2</loc>
+        <lastmod>2020-09-03</lastmod>
+        <changefreq>weekly</changefreq>
+    </url>
 
 </urlset>

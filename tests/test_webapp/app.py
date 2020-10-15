@@ -29,11 +29,17 @@ def about_link_2():
 def contact():
     return render_template("success.html", name="Contact")
 
+@app.route("/rel")
+def relative_link():
+    return render_template("success.html",name="Rel")
+
+@app.route("/rel2")
+def relative_link2():
+    return render_template("success.html",name="Rel2")       
 
 @app.route("/login")
 def login():
     return render_template("error.html", status_code=401), 401
-
 
 @app.route("/500")
 def five_hundred():
