@@ -121,7 +121,7 @@ class LinkAnalysis(AllTags):
         self.obsolete_attrs = self.obsolete_attrs(self.all_atags)
 
 
-    def obsolete_attrs(self, links):
+    def obsolete_attrs(self, links) -> dict:
         OBSOLETE_ATTRS = ('charset', 'coords', 'name', 'rev', 'shape')
         
         return_dict = dict()
