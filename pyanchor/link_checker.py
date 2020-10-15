@@ -12,7 +12,7 @@ response (dict key).
 
 import requests
 from bs4 import BeautifulSoup
-
+import re
 
 class LinkResults:
     def __init__(self, url: str):
@@ -47,12 +47,12 @@ class LinkResults:
             href = self.base_url + href.lstrip("/")
         
         elif href.startswith("./"):
-            import re   #using re.sub to remove all instances ./
+         #using re.sub to remove all instances ./
             href=self.base_url +re.sub("./","",href)
             return href
 
         elif href.startswith("../"):
-            import re #using re.sub to remove all instances of ../
+         #using re.sub to remove all instances of ../
             href=self.base_url + re.sub("../","",href)
             return href
 
