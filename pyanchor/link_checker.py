@@ -48,16 +48,13 @@ class LinkResults:
             return href
 
         elif href.startswith("./"):
-            return self.base_url + re.sub("./", "", href) #using re.sub to remove all instances of ./ in href
+            return self.base_url + re.sub("./", "", href)
 
         elif href.startswith("../"):
-            return self.base_url + re.sub("../", "", href) #using re.sub to remove all instances of ./ in href
+            return self.base_url + re.sub("../", "", href)
 
-        elif href.startswith("#"):
-            if "#" not in list(self.base_url):
-                return self.base_url + re.sub("#", "", href) #checks if # exists in base_url
-            else:
-                return None #returns none if # already exists in self.base_url   
+        else:
+            return None # Catches any links starting with #
 
 
     def find_all_atags(self, url: str):
