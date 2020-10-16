@@ -1,13 +1,13 @@
 import pytest
 
 from typer.testing import CliRunner
-
 from pyanchor.cli import app
 
 
 runner = CliRunner()
 
 
+@pytest.mark.usefixtures('server')
 class TestCli:
     def test_exception_on_invalid_url_http_scheme(self):
         result = runner.invoke(app, ["google.com"])

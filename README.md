@@ -3,6 +3,8 @@
 [![PyPI version](https://badge.fury.io/py/pyanchor.svg)](https://badge.fury.io/py/pyanchor)
 ![GitHub](https://img.shields.io/github/license/endlesstrax/pyanchor)
 ![Black](https://img.shields.io/badge/code%20style-black-000000.svg)
+![CodeCov](https://codecov.io/gh/EndlessTrax/pyanchor/branch/master/graph/badge.svg)
+![Build](https://travis-ci.org/EndlessTrax/pyanchor.svg?branch=master)
 
 Dead links are an annoyance for websites with an extensive amount of content. A side from the
 negative impact on SEO, dead links are an annoyance for any user that clicks on one.
@@ -78,7 +80,7 @@ dictionary key, with a list of URLs that achieve that response code as the dicti
 The plan for PyAnchor is to add further analysis of anchor tags, such as missing attributes and
 security considerations.
 
-After that... who knows? 🤷‍♂️
+After that, who knows? 🤷‍♂️
 
 ## Feedback
 
@@ -93,4 +95,4 @@ If you would like to show your support for the project, I would be very grateful
 to a charity close to my heart, [Walk AS One](https://walkasone.org/donate/).
 
 And if you would prefer to donate to me personally instead,
-[buy me a coffee](https://ko-fi.com/endlesstrax)? 🤓
+[you can sponsor me on Github](https://github.com/sponsors/EndlessTrax)? 🤓
