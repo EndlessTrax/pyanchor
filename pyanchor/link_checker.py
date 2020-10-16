@@ -12,7 +12,7 @@ response (dict key).
 
 import requests
 from bs4 import BeautifulSoup
-
+import re
 
 class LinkResults:
     def __init__(self, url: str):
@@ -42,11 +42,23 @@ class LinkResults:
 
         if href.startswith(self.base_url):
             return href
+
         elif href.startswith("/"):
             href = self.base_url + href.lstrip("/")
             return href
-        else:  # This catches any href set to '#'
-            return None  # TODO: Deal with ./ or ../ relative links.
+
+        elif href.startswith("./"):
+            return self.base_url + re.sub("./", "", href) #using re.sub to remove all instances of ./ in href
+
+        elif href.startswith("../"):
+            return self.base_url + re.sub("../", "", href) #using re.sub to remove all instances of ./ in href
+
+        elif href.startswith("#"):
+            if "#" not in list(self.base_url):
+                return self.base_url + re.sub("#", "", href) #checks if # exists in base_url
+            else:
+                return None #returns none if # already exists in self.base_url   
+
 
     def find_all_atags(self, url: str):
         """Find all anchor tags on a given URL.

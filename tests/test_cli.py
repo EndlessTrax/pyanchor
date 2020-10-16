@@ -16,6 +16,8 @@ class TestCli:
     def test_successful_result_prints(self):
         results = runner.invoke(app, ["http://127.0.0.1:5000/", "--verbose"])
         assert "[ 200 ] - http://127.0.0.1:5000/about" in results.output
+        assert "[ 200 ] - http://127.0.0.1:5000/rel" in results.output
+        assert "[ 200 ] - http://127.0.0.1:5000/rel2" in results.output
 
     def test_failing_result_prints(self):
         results = runner.invoke(app, ["http://127.0.0.1:5000/"])
