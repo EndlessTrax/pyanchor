@@ -95,4 +95,13 @@ If you would like to show your support for the project, I would be very grateful
 to a charity close to my heart, [Walk AS One](https://walkasone.org/donate/).
 
 And if you would prefer to donate to me personally instead,
-[buy me a coffee](https://ko-fi.com/endlesstrax)? 🤓
+[you can sponsor me on Github](https://github.com/sponsors/EndlessTrax)? 🤓
+
+
+## Contributors
+
+Thank you to:
+
+- [Icelain](https://github.com/Icelain) for PR [#11](https://github.com/EndlessTrax/pyanchor/pull/11)
+- [wevnasc](https://github.com/wevnasc) for PR [#8](https://github.com/EndlessTrax/pyanchor/pull/8)
+- [muditshamz](https://github.com/muditshamz) for PR [#6](https://github.com/EndlessTrax/pyanchor/pull/6)

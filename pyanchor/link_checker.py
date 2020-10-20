@@ -12,7 +12,7 @@ response (dict key).
 
 import requests
 from bs4 import BeautifulSoup
-
+import re
 
 class AllTags:
 
@@ -64,11 +64,20 @@ class LinkResults(AllTags):
 
         if href.startswith(self.base_url):
             return href
+
         elif href.startswith("/"):
             href = self.base_url + href.lstrip("/")
             return href
-        else:  # This catches any href set to '#'
-            return None  # TODO: Deal with ./ or ../ relative links.
+
+        elif href.startswith("./"):
+            return self.base_url + re.sub("./", "", href)
+
+        elif href.startswith("../"):
+            return self.base_url + re.sub("../", "", href)
+
+        else:
+            return None # Catches any links starting with #
+
 
     def build_results_dictionary(self) -> dict:
         """Build the final results dictionary.

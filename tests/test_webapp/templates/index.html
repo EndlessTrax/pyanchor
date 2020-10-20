@@ -1,29 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test Web App</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Web App</title>
+  </head>
+  <body>
+    <!-- These should pass -->
+    <a href="/about">About Page</a>
+    <a href="http://127.0.0.1:5000/contact">Contact Page</a>
+    <a href="#">Hash Link</a>
+    <a href="./rel">Rel Link</a>
+    <a href="../rel2">Second Rel Link</a>
 
-  <!-- These should pass -->
-  <a href="/about">About Page</a>
-  <a href="http://127.0.0.1:5000/contact">Contact Page</a>
-  <a href="#">Hash Link</a>
-  <a href="./">Rel Link</a>
+    <!-- These should fail -->
+    <a href="/dhjaow">Failing Link</a>
+    <a href="/login">Login Link</a>
+    <a href="/500">500 Error</a>
 
-  <!-- These should fail -->
-  <a href="/dhjaow">Failing Link</a>
-  <a href="/login">Login Link</a>
-  <a href="/500">500 Error</a>
+    <!-- These have varied attributes to test LinkAnalysis -->
+    <a href="/about/link-1" charset="utf-8"></a>
+    <a href="/about/link-1" name="test"></a>
 
-
-  <!-- These have varied attributes to test LinkAnalysis -->
-  <a href="/about/link-1" charset="utf-8"></a>
-  <a href="/about/link-1" name="test"></a>
-
-
-
-</body>
+  </body>
 </html>
+
