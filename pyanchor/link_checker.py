@@ -127,10 +127,10 @@ class LinkAnalysis(AllTags):
 
     def __init__(self, url: str):
         super().__init__(url)
-        self.obsolete_attrs = self.obsolete_attrs(self.all_atags)
+        self.obsolete_attrs = self.obsolete_attributes(self.all_atags)
+        self.unsafe_attrs = self.unsafe_attributes(self.all_atags)
 
-
-    def obsolete_attrs(self, links) -> dict:
+    def obsolete_attributes(self, links: str) -> dict:
         OBSOLETE_ATTRS = ('charset', 'coords', 'name', 'rev', 'shape')
         
         return_dict = dict()
@@ -149,9 +149,13 @@ class LinkAnalysis(AllTags):
         
         return return_dict
 
+    def unsafe_attributes(self, links: str) -> dict:
+        return_dict = dict()
+        for link in links:
+            if link.get('target'):
+                if link.get('rel') and 'noopener' in link.get('rel'):
+                    return_dict[link] = False
+                else:
+                    return_dict[link] = True
 
-    def missing_attrs(self):
-        pass
-
-    def unsafe_attrs(self):
-        pass
+        return return_dict
