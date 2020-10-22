@@ -149,7 +149,8 @@ class LinkAnalysis(AllTags):
             if len(obs_link_attrs) > 0:
                 href = link["href"]
                 if href in return_dict:
-                    return_dict[href].append(*obs_link_attrs)
+                    for _attr in obs_link_attrs:
+                        return_dict[href].append(_attr)
                 else:
                     return_dict[href] = obs_link_attrs
 
