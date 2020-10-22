@@ -24,7 +24,6 @@ checked for obsolote attributes.
 import requests
 from bs4 import BeautifulSoup
 import re
-from typing import Type
 
 
 class AllTags:
@@ -39,7 +38,7 @@ class AllTags:
     def __str__(self) -> str:
         return f"All links for {self.base_url}"
 
-    def find_all_atags(self, url: str) -> bs4.element.ResultSet:
+    def find_all_atags(self, url: str):
         """Find all anchor tags on a given URL.
         
         Args:
@@ -125,7 +124,7 @@ class LinkAnalysis(AllTags):
         self.obsolete_attrs = self.obsolete_attributes(self.all_atags)
         self.unsafe_attrs = self.unsafe_attributes(self.all_atags)
 
-    def obsolete_attributes(self, links: Type[bs4.element.ResultSet]) -> dict:
+    def obsolete_attributes(self, links) -> dict:
         """ Check links for the presence of obsolete attributes
         
         Args:
@@ -156,7 +155,7 @@ class LinkAnalysis(AllTags):
 
         return return_dict
 
-    def unsafe_attributes(self, links: Type[bs4.element.ResultSet]) -> dict:
+    def unsafe_attributes(self, links) -> dict:
         """ Checks to see if links are unsafe.
 
         All links with the `target` attribute are checked for the presence/absence
