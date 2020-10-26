@@ -13,7 +13,8 @@ requires = [
     "beautifulsoup4",
     "requests",
     "typer",
-    "lxml"
+    "lxml",
+    "colorama"
 ]
 requires-python=">=3.6"
 
