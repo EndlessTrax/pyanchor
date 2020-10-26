@@ -75,12 +75,29 @@ Example:
 As you can see the `results` attribute is a dictionary containing all response codes returned as a
 dictionary key, with a list of URLs that achieve that response code as the dictionary value.
 
-## What's next?
+### Analyzing Links
 
-The plan for PyAnchor is to add further analysis of anchor tags, such as missing attributes and
-security considerations.
+PyAnchor give you the ability to use the `LinkAnalysis` class to check the links in a given URL for unsafe and obsolete attributes.
 
-After that, who knows? 🤷‍♂️
+To check for obsolete attributes use the `obsolete_attrs` property:
+
+```
+>>> from pyanchor.link_checker import LinkAnalysis
+>>> r = LinkAnalysis("https://mysite.com/")
+>>> r.obsolete_attrs
+{'/about/link-1': ['charset', 'rev'], '/about/link-2': ['name']}
+```
+
+Likewise you can check for unsafe linkes with `unsafe_attrs`:
+
+```
+>>> from pyanchor.link_checker import LinkAnalysis
+>>> r = LinkAnalysis("https://mysite.com/")
+>>> r.unsafe_attrs
+{<a href="/about/link-4" target="_blank">Link 4</a>: True, <a href="/about/link-5" rel="noreferrer noopener" target="_blank">Link 5</a>: False}
+```
+
+Any link that **does not** include `rel="noopener"` when the `target` attribute is used will return `True`. As in, **it is True that this link is unsafe**. Therfore, links with appropriate attributes will return `False`.
 
 ## Feedback
 
@@ -96,6 +113,18 @@ to a charity close to my heart, [Walk AS One](https://walkasone.org/donate/).
 
 And if you would prefer to donate to me personally instead,
 [you can sponsor me on Github](https://github.com/sponsors/EndlessTrax)? 🤓
+
+
+## How to Contribute
+
+Please **raise an issue** before making a PR, so that the issue and implementation can be discussed before you write any code. **This will save you time**, and increase the chances of your PR being merged without significant changes. 
+
+Please make PR's on a **new branch**, and _not_ on main/master. 
+
+Please **format you code** with [Black]().
+
+Please **include tests** for any PR's that include code (unless current tests cover your code contribution).
+
 
 
 ## Contributors
