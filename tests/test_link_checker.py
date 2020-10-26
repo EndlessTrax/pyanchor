@@ -7,6 +7,7 @@ from pyanchor.link_checker import LinkAnalysis, LinkResults
 def example_LinkResults_object():
     return LinkResults("http://127.0.0.1:5000/")
 
+
 @pytest.fixture
 def example_LinkAnalysis_object():
     return LinkAnalysis("http://127.0.0.1:5000/")

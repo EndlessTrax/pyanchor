@@ -36,7 +36,7 @@ def print_results(links: dict, verbose: bool) -> int:
     return num_of_successful_links, num_of_failed_links
 
 
-def print_totals(success:int, failed:int):
+def print_totals(success: int, failed: int):
     """Prints results to terminal"""
     typer.echo("========================")
     typer.echo(f"TOTAL LINKS CHECKED: {success + failed}")
@@ -50,7 +50,9 @@ def main(
         False, "--sitemap", help="Use if the URL is a sitemap.xml link"
     ),
     verbose: bool = typer.Option(
-        False, "--verbose", help="By default all 200 responses will be hidden from the final output. Use verbose to view ALL results"
+        False,
+        "--verbose",
+        help="By default all 200 responses will be hidden from the final output. Use verbose to view ALL results",
     ),
 ):
     """Check for broken links on any given web page. Pass in a sitemap URL to
@@ -77,12 +79,12 @@ def main(
             link_results = LinkResults(_url).results
             if len(link_results) > 0:
                 all_results.append(link_results)
-        
+
         success_totals = 0
         failed_totals = 0
         for results_dict in all_results:
             _success, _failed = print_results(results_dict, verbose=verbose)
-            success_totals =  success_totals + _success
+            success_totals = success_totals + _success
             failed_totals = failed_totals + _failed
 
         print_totals(success_totals, failed_totals)
