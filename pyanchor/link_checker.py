@@ -128,12 +128,12 @@ class LinkAnalysis(AllTags):
         """ Check links for the presence of obsolete attributes
         
         Args:
-            Takes a bs4 ResultSet which is returned from AllTags in self.all_atags
+            links: Takes a bs4 ResultSet which is returned from AllTags in self.all_atags
 
         Returns:
             Returns a dictionary with the key being the `href` of the link, 
-            and the value being a `List` of obsolete attributes that link has. 
-            Any link with 0 obsolete attributes is ingnored.
+            and the value being a `List` of obsolete attributes that the link has. 
+            Any link with zero obsolete attributes is ingnored.
 
         """
 
@@ -162,12 +162,12 @@ class LinkAnalysis(AllTags):
         All links with the `target` attribute are checked for the presence/absence
         of a `rel="noopener"`. This should be present on all anchor tags with the
         `target` attribute to ensure the linked site does not have access to 
-        window.opener property. 
+        window.opener property.
         
         For more details: https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/noopener 
 
         Args:
-            Takes a bs4 ResultSet which is returned from AllTags in self.all_atags
+            links: Takes a bs4 ResultSet which is returned from AllTags in self.all_atags
 
         Returns:
             Returns a dictionary with the key being the full anchor tag checked, 
