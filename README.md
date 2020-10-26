@@ -121,7 +121,7 @@ Please **raise an issue** before making a PR, so that the issue and implementati
 
 Please make PR's on a **new branch**, and _not_ on main/master. 
 
-Please **format you code** with [Black]().
+Please **format you code** with [Black](https://pypi.org/project/black/).
 
 Please **include tests** for any PR's that include code (unless current tests cover your code contribution).
 
