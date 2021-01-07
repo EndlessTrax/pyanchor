@@ -15,7 +15,7 @@ flit==2.3.0
 flit-core==2.3.0
 idna==2.10
 iniconfig==1.0.0
-lxml==4.5.2
+lxml==4.6.2
 more-itertools==8.4.0
 packaging==20.4
 pathspec==0.8.0
