@@ -22,7 +22,7 @@ def print_results(links: dict, verbose: bool) -> int:
         if http_code == 200:
             for url in url_list:
                 num_of_successful_links += 1
-                if verbose is True:
+                if verbose:
                     typer.echo(typer.style(f"[ {http_code} ] - {url}", fg="green"))
         elif http_code == 500:
             for url in url_list:
@@ -62,9 +62,9 @@ def main(
     if not url.startswith("http"):
         raise ValueError("Please provide a URL with a valid HTTP scheme")
 
-    if sitemap is True:
+    if sitemap:
         set_of_urls = set()
-        results = dict()
+        results = {}
 
         r = requests.get(url)
         if r.status_code == 200:
@@ -74,7 +74,7 @@ def main(
             for sitemap_link in sitemap_links:
                 set_of_urls.add(sitemap_link.text)
 
-        all_results = list()
+        all_results = []
         for _url in set_of_urls:
             link_results = LinkResults(_url).results
             if len(link_results) > 0:
@@ -84,15 +84,14 @@ def main(
         failed_totals = 0
         for results_dict in all_results:
             _success, _failed = print_results(results_dict, verbose=verbose)
-            success_totals = success_totals + _success
-            failed_totals = failed_totals + _failed
-
-        print_totals(success_totals, failed_totals)
+            success_totals += _success
+            failed_totals += _failed
 
     else:
         results = LinkResults(url).results
         success_totals, failed_totals = print_results(results, verbose=verbose)
-        print_totals(success_totals, failed_totals)
+
+    print_totals(success_totals, failed_totals)
 
 
 if __name__ == "__main__":

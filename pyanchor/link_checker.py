@@ -28,11 +28,7 @@ import re
 
 class AllTags:
     def __init__(self, url: str):
-        if url.endswith("/"):
-            self.base_url = url
-        else:
-            self.base_url = url + "/"
-
+        self.base_url = url if url.endswith("/") else url + "/"
         self.all_atags = self.find_all_atags(self.base_url)
 
     def __str__(self) -> str:
@@ -80,10 +76,10 @@ class LinkResults(AllTags):
             return href
 
         elif href.startswith("./"):
-            return self.base_url + re.sub("./", "", href)
+            return self.base_url + href.lstrip("./")
 
         elif href.startswith("../"):
-            return self.base_url + re.sub("../", "", href)
+            return self.base_url + href.lstrip("../")
 
         else:
             return None  # Catches any links starting with hash(#)
@@ -99,7 +95,7 @@ class LinkResults(AllTags):
             and the value = a List of URLs that achieved that response code.
         """
 
-        results = dict()
+        results = {}
 
         try:
             for tag in self.all_atags:
@@ -139,14 +135,13 @@ class LinkAnalysis(AllTags):
 
         OBSOLETE_ATTRS = ("charset", "coords", "name", "rev", "shape")
 
-        return_dict = dict()
+        return_dict = {}
         for link in links:
-            obs_link_attrs = []
-            for attribute in OBSOLETE_ATTRS:
-                if link.get(attribute):
-                    obs_link_attrs.append(attribute)
+            obs_link_attrs = [
+                attribute for attribute in OBSOLETE_ATTRS if link.get(attribute)
+            ]
 
-            if len(obs_link_attrs) > 0:
+            if obs_link_attrs:
                 href = link["href"]
                 if href in return_dict:
                     for _attr in obs_link_attrs:
@@ -173,7 +168,7 @@ class LinkAnalysis(AllTags):
             Returns a dictionary with the key being the full anchor tag checked, 
             and the value being a `Bool`. False = safe link, True = unsafe.
         """
-        return_dict = dict()
+        return_dict = {}
         for link in links:
             if link.get("target"):
                 if link.get("rel") and "noopener" in link.get("rel"):
