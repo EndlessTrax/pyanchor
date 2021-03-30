@@ -76,10 +76,10 @@ class LinkResults(AllTags):
             return href
 
         elif href.startswith("./"):
-            return self.base_url + re.sub("./", "", href)
+            return self.base_url + href.lstrip("./")
 
         elif href.startswith("../"):
-            return self.base_url + re.sub("../", "", href)
+            return self.base_url + href.lstrip("../")
 
         else:
             return None  # Catches any links starting with hash(#)
