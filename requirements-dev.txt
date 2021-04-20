@@ -20,7 +20,7 @@ more-itertools==8.4.0
 packaging==20.4
 pathspec==0.8.0
 pluggy==0.13.1
-py==1.9.0
+py==1.10.0
 pyparsing==2.4.7
 pytest==6.0.0
 pytest-cov==2.10.0
