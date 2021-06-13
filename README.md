@@ -56,6 +56,10 @@ response add the `--verbose` flag.
 > pyanchor https://mysite.com/sitemap.xml --sitemap --verbose
 ```
 
+![Example Gif](/assets/example-help.gif)
+![Example Gif](/assets/example-single-page.gif)
+![Example Gif](/assets/example-single-page-verbose.gif)
+![Example Gif](/assets/example-sitemap.gif)
 ![Example Gif](/assets/example-sitemap-verbose.gif)
 
 ## But wait, there's more...
