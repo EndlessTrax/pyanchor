@@ -131,6 +131,8 @@ Please **include tests** for any PR's that include code (unless current tests co
 
 Thank you to:
 
+- [mrbazzan](https://github.com/mrbazzan) for PR [#25](https://github.com/EndlessTrax/pyanchor/pull/25)
 - [Icelain](https://github.com/Icelain) for PR [#11](https://github.com/EndlessTrax/pyanchor/pull/11)
 - [wevnasc](https://github.com/wevnasc) for PR [#8](https://github.com/EndlessTrax/pyanchor/pull/8)
 - [muditshamz](https://github.com/muditshamz) for PR [#6](https://github.com/EndlessTrax/pyanchor/pull/6)
+  
