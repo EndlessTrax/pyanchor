@@ -30,29 +30,47 @@ Windows:
 
 ## Using the CLI
 
-The CLI can be invoked with the `pyanchor` command. A URL **must** be provided.
+The CLI can be invoked with the `pyanchor` command. A URL **must** be provided unless it's the help page.
+
+To get the help page:
+
+```shell script
+> pyanchor --help
+```
+
+![Example Gif](/assets/example-help.gif)
 
 Basic example for a single page:
+> Note: all provided URLs must include a valid HTTP scheme.
 
 ```shell
 > pyanchor https://mysite.com/
 ```
 
-> Note: all provided URLs must include a valid HTTP scheme.
+
+![Example Gif](/assets/example-single-page.gif)
+
 
 If you want to check all links on a website, and not just a single page, a `sitemap.xml` URL may be
 provided and flagged with `--sitemap`.
 
 Example:
 
-```shell
+```shell script
 > pyanchor https://mysite.com/sitemap.xml --sitemap
 ```
+
+![Example Gif](/assets/example-sitemap.gif)
 
 By default, successful requests are not printed to the terminal. To see all urls with a `200`
 response add the `--verbose` flag.
 
-```shell
+```shell script
+> pyanchor https://mysite.com --verbose
+```
+![Example Gif](/assets/example-single-page-verbose.gif)
+
+```shell script
 > pyanchor https://mysite.com/sitemap.xml --sitemap --verbose
 ```
 
