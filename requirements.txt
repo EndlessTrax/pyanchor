@@ -3,3 +3,4 @@ requests
 typer
 lxml
 colorama
+tabulate

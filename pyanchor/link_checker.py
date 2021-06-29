@@ -129,7 +129,7 @@ class LinkAnalysis(AllTags):
         Returns:
             Returns a dictionary with the key being the `href` of the link, 
             and the value being a `List` of obsolete attributes that the link has. 
-            Any link with zero obsolete attributes is ingnored.
+            Any link with zero obsolete attributes is ignored.
 
         """
 
@@ -156,24 +156,24 @@ class LinkAnalysis(AllTags):
 
         All links with the `target` attribute are checked for the presence/absence
         of a `rel="noopener"`. This should be present on all anchor tags with the
-        `target` attribute to ensure the linked site does not have access to 
+        `target` attribute to ensure the linked site does not have access to
         window.opener property.
-        
-        For more details: https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/noopener 
+
+        For more details: https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/noopener
 
         Args:
             links: Takes a bs4 ResultSet which is returned from AllTags in self.all_atags
 
         Returns:
-            Returns a dictionary with the key being the full anchor tag checked, 
-            and the value being a `Bool`. False = safe link, True = unsafe.
+            Returns a dictionary with the key being a `Bool`, and the value being the
+            full anchor tag checked. False = safe link, True = unsafe.
         """
-        return_dict = {}
+        return_dict = {False: [], True: []}
         for link in links:
             if link.get("target"):
                 if link.get("rel") and "noopener" in link.get("rel"):
-                    return_dict[link] = False
+                    return_dict[False].append(link)
                 else:
-                    return_dict[link] = True
+                    return_dict[True].append(link)
 
         return return_dict

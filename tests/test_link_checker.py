@@ -36,3 +36,8 @@ class TestLinkAnalysis:
 
     def test_unsafe_attrs_returns_dict(self, example_LinkAnalysis_object):
         assert isinstance(example_LinkAnalysis_object.unsafe_attrs, dict)
+
+    def test_unsafe_attrs_contains_true_and_false(self, example_LinkAnalysis_object):
+        _list = example_LinkAnalysis_object.unsafe_attrs
+        assert False in _list.keys()
+        assert True in _list.keys()

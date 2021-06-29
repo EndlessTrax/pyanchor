@@ -106,16 +106,17 @@ To check for obsolete attributes use the `obsolete_attrs` property:
 {'/about/link-1': ['charset', 'rev'], '/about/link-2': ['name']}
 ```
 
-Likewise you can check for unsafe linkes with `unsafe_attrs`:
+Likewise you can check for unsafe links with `unsafe_attrs`:
 
 ```
 >>> from pyanchor.link_checker import LinkAnalysis
 >>> r = LinkAnalysis("https://mysite.com/")
 >>> r.unsafe_attrs
-{<a href="/about/link-4" target="_blank">Link 4</a>: True, <a href="/about/link-5" rel="noreferrer noopener" target="_blank">Link 5</a>: False}
+{False: [<a href="/about/link-5" rel="noreferrer noopener" target="_blank">Link 5</a>], True: [<a href="/about/link-4" target="_blank">Link 4</a>]}
 ```
 
-Any link that **does not** include `rel="noopener"` when the `target` attribute is used will return `True`. As in, **it is True that this link is unsafe**. Therfore, links with appropriate attributes will return `False`.
+
+Any link that **does not** include `rel="noopener"` when the `target` attribute is used will fall under the `True` category. As in, **it is True that this link is unsafe**. Therefore, links with appropriate attributes will be under the `False` category.
 
 ## Feedback
 
