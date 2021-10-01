@@ -23,7 +23,7 @@ def print_results(links: dict, verbose: bool) -> int:
             for url in url_list:
                 num_of_successful_links += 1
                 if verbose:
-                    typer.echo(typer.style(f"[ {http_code} ] - {url}", fg="green"))
+                    typer.echo(typer.style(f"[ {http_code} ] - {url}", fg='green'))
         elif http_code == 500:
             for url in url_list:
                 typer.echo(typer.style(f"[ {http_code} ] - {url}", fg="red"))
