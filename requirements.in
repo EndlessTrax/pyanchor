@@ -1,0 +1,11 @@
+beautifulsoup4
+requests
+typer
+lxml
+colorama
+black
+pytest
+pytest-cov
+python-dotenv
+flask
+flit
