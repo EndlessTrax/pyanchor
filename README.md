@@ -14,7 +14,7 @@ into your development workflow so that users never see a 404 in the first place.
 
 ## Install
 
-PyAnchor requires Python 3.6 and above.
+PyAnchor requires Python 3.7 and above.
 
 MacOS / Linux:
 
