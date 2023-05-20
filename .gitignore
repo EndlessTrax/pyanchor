@@ -51,6 +51,9 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 
+# Linter stuff:
+.ruff_cache/
+
 # Translations
 *.mo
 *.pot
