@@ -9,3 +9,4 @@ pytest-cov==3.0.0
 python-dotenv==0.20.0
 flask==2.1.2
 flit==3.7.1
+rich==13.3.5

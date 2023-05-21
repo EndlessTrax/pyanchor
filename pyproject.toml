@@ -30,4 +30,4 @@ Documentation = "https://github.com/EndlessTrax/pyanchor/blob/master/README.md"
 Issues = "https://github.com/EndlessTrax/pyanchor/issues"
 
 [tool.flit.scripts]
-pyanchor = "pyanchor.cli:app"
+pyanchor = "pyanchor.cli.main:app"

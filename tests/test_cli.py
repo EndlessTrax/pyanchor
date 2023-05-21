@@ -1,8 +1,7 @@
 import pytest
-
 from typer.testing import CliRunner
-from pyanchor.cli import app
 
+from pyanchor.cli.main import app
 
 runner = CliRunner()
 

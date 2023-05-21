@@ -1,6 +1,8 @@
+from threading import Thread
+
 import pytest
 from werkzeug.serving import make_server
-from threading import Thread
+
 from tests.test_webapp.app import app
 
 
