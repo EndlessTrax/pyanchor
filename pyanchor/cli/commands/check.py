@@ -1,34 +1,43 @@
 import typer
 
+from pyanchor.filters import (
+    filter_for_http_not_OK,
+    filter_for_obsolete_attrs,
+    filter_for_unsafe_links,
+)
 from pyanchor.parse import PageResults
 
 check_app = typer.Typer()
 
+
 @check_app.command("url")
 def check_url(
-    url: str, 
-    show_all: bool = typer.Option(False, "--all", "-a", help="Show all results, includes HTTP OK"), # noqa
-    unsafe: bool = typer.Option(False, "--unsafe", "-u", help="Show unsafe and unsupported attributes"), # noqa   
+    url: str,
+    show_all: bool = typer.Option(
+        False, "--all", "-a", help="Show all results, includes HTTP OK"
+    ),
+    unsafe: bool = typer.Option(
+        False, "--unsafe", "-u", help="Show unsafe links"
+    ),
+    obsolete: bool = typer.Option(
+        False, "--obsolete", "-o", help="Show unsupported attributes"
+    ),
 ):
-    results = PageResults(url)
+    results = PageResults(url).anchor_tags
 
     # filter results based on options passed in by user
     if unsafe:
-        for atag in results.anchor_tags:
-            atag.check_is_unsafe()
-            atag.check_for_obsolete_attrs()
-            
-            if atag.is_unsafe:
-                typer.echo(atag.href)
+        filter_for_unsafe_links(results)
 
-    if show_all:
-        for atag in results.anchor_tags:
-            typer.echo(atag.href)
-    else:
-        for atag in results.anchor_tags:
-            if atag.status_code != 200:
-                typer.echo(atag.href)
+    elif obsolete:
+        filter_for_obsolete_attrs(results)
 
+    elif not show_all:
+        filter_for_http_not_OK(results)
+
+    # print results
+    for result in results:
+        typer.echo(result)
 
 
 if __name__ == "__main__":

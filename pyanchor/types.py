@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from enum import auto, StrEnum
+from enum import StrEnum, auto
 from urllib.parse import urljoin
 
 import requests
@@ -19,10 +19,9 @@ class AnchorTag:
     attributes: dict
     href: str
     origin: str
-    text: str = None
-    qualified_url: str = None
-    status_code: int = None
-    is_unsafe: bool = None
+    text: str
+    status_code = None
+    obsolete_attrs = None
     # TODO: Find out best method for ordering dataclass fields
 
     def __str__(self) -> str:
@@ -41,16 +40,28 @@ class AnchorTag:
 
         if self.href.startswith("http"):
             return self.href
-        elif self.href.startswith(("/", "./", "../")):
+        elif self.href.startswith(
+            ("/", "./", "../")
+        ):  # TODO: Test for ../ more thoroughly
             return urljoin(self.origin, self.href)
         else:
             # Catch anchor tags with # or no href
             return None  # TODO: Deal with exceptions better
 
     def check_for_obsolete_attrs(self) -> list[str]:
-        return [k for k, _ in self.attributes.items()]
+        # TODO: Check against the ENUM
+        # Check for obsolete attributes as defined in ObsolteAttrs enum.
+        # Return list of obsolete attributes found.
+        self.obsolete_attrs = [
+            attr for attr in self.attributes if attr in ObsoleteAttrs.__members__
+        ]
+        return self.obsolete_attrs
 
     def check_is_unsafe(self) -> bool:
+        """#TODO Add docstring"""
         if self.attributes.get("target"):
-            if not self.attributes.get("rel") and "noopener" not in self.attributes.get("rel"): # noqa
-                self.is_unsafe = True
+            if not self.attributes.get("rel") and "noopener" not in self.attributes.get(
+                "rel"
+            ):  # noqa
+                return True
+        return False
