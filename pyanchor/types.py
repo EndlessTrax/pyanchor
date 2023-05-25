@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from enum import StrEnum, auto
 from urllib.parse import urljoin
+from typing import Optional
 
 import requests
 
@@ -17,11 +18,10 @@ class ObsoleteAttrs(StrEnum):
 class AnchorTag:
     raw_tag: str
     attributes: dict
-    href: str
     origin: str
-    text: str
-    status_code = None
-    obsolete_attrs = None
+    href: str
+    status_code: Optional[int] = None
+    obsolete_attrs: Optional[list] = None
     # TODO: Find out best method for ordering dataclass fields
 
     def __str__(self) -> str:
@@ -60,8 +60,6 @@ class AnchorTag:
     def check_is_unsafe(self) -> bool:
         """#TODO Add docstring"""
         if self.attributes.get("target"):
-            if not self.attributes.get("rel") and "noopener" not in self.attributes.get(
-                "rel"
-            ):  # noqa
+            if self.attributes.get("rel") and "noopener" in self.attributes.get("rel"):
                 return True
         return False
