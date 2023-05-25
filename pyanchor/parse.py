@@ -16,9 +16,8 @@ class PageResults:
             AnchorTag(
                 raw_tag=str(atag),
                 attributes=atag.attrs,
-                href=atag.get("href"),
                 origin=url,
-                text=atag.text,
+                href=atag.get("href"),
             )
             for atag in atags
         ]
