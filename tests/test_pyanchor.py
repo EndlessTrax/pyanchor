@@ -58,7 +58,7 @@ class TestAnchorTag:
 
 class TestFilters:
     def test_filter_for_unsafe_links(self):
-        unsafe = [
+        atags = [
             AnchorTag(
                 '<a href="/link-1 target="_blank">Safe Link</a>',
                 {"href": "link-1", "text": "Safe Link", "target": "_blank"},
@@ -77,14 +77,14 @@ class TestFilters:
                 "/link-2",
             ),
         ]
-        filter_for_unsafe_links(unsafe)
+        unsafe = filter_for_unsafe_links(atags)
         assert len(unsafe) == 1
 
     def test_filter_for_obsolete_attrs(self):
-        obsolete = [
+        atags = [
             AnchorTag(
-                '<a href="/link-1" name="test">Link 1</a>',
-                {"href": "/link-1", "text": "Link 1", "name": "test"},
+                '<a href="/link-1">Link 1</a>',
+                {"href": "/link-1", "text": "Link 1"},
                 "http://example.com",
                 "/link-1",
             ),
@@ -100,11 +100,11 @@ class TestFilters:
                 "/link-2",
             ),
         ]
-        filter_for_obsolete_attrs(obsolete)
+        obsolete = filter_for_obsolete_attrs(atags)
         assert len(obsolete) == 1
 
     def test_filter_for_http_not_OK(self):
-        not_okay = [
+        atags = [
             AnchorTag(
                 '<a href="/link-1">Link 1</a>',
                 {"href": "/link-1", "text": "Link 1"},
@@ -118,7 +118,7 @@ class TestFilters:
                 "/dhjaow",
             ),
         ]
-        not_okay[0].status_code = 200
-        not_okay[1].status_code = 404
-        filter_for_http_not_OK(not_okay)
+        atags[0].status_code = 200
+        atags[1].status_code = 404
+        not_okay = filter_for_http_not_OK(atags)
         assert len(not_okay) == 1
