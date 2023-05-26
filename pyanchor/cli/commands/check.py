@@ -16,9 +16,7 @@ def check_url(
     show_all: bool = typer.Option(
         False, "--all", "-a", help="Show all results, includes HTTP OK"
     ),
-    unsafe: bool = typer.Option(
-        False, "--unsafe", "-u", help="Show unsafe links"
-    ),
+    unsafe: bool = typer.Option(False, "--unsafe", "-u", help="Show unsafe links"),
     obsolete: bool = typer.Option(
         False, "--obsolete", "-o", help="Show unsupported attributes"
     ),

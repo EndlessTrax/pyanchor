@@ -1,9 +1,9 @@
-from pyanchor.types import AnchorTag
 from pyanchor.filters import (
-    filter_for_unsafe_links,
-    filter_for_obsolete_attrs,
     filter_for_http_not_OK,
+    filter_for_obsolete_attrs,
+    filter_for_unsafe_links,
 )
+from pyanchor.types import AnchorTag
 
 
 class TestAnchorTag:
@@ -47,7 +47,7 @@ class TestAnchorTag:
                 {"href": "#", "text": "Link 5"},
                 "http://example.com",
                 "#",
-            ),        
+            ),
         ]
         assert anchor_tags[0].qualified_url == "http://example.com/link-1"
         assert anchor_tags[1].qualified_url == "http://example.com/link-2"
@@ -66,7 +66,7 @@ class TestFilters:
                 "/link-1",
             ),
             AnchorTag(
-                '<a href="/link-2" target="_blank" rel="noreferrer noopener">Unsafe Link</a>',
+                '<a href="/link-2" target="_blank" rel="noreferrer noopener">Unsafe Link</a>', # noqa
                 {
                     "href": "link-2",
                     "text": "Unsafe Link",

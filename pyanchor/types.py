@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from enum import StrEnum, auto
-from urllib.parse import urljoin
 from typing import Optional
+from urllib.parse import urljoin
 
 import requests
 
@@ -24,13 +24,13 @@ class AnchorTag:
     obsolete_attrs: Optional[list] = None
     # TODO: Find out best method for ordering dataclass fields
 
-    def __str__(self) -> str:
-        return f"{self.raw_tag}"
-
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         self.qualified_url = self.build_qualified_url()
         if self.qualified_url:
             self.status_code = requests.get(self.qualified_url).status_code
+
+    def __str__(self) -> str:
+        return f"{self.raw_tag}"
 
     def build_qualified_url(self) -> str or None:
         """#TODO: Add docstring"""
