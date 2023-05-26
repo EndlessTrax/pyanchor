@@ -40,18 +40,14 @@ class AnchorTag:
 
         if self.href.startswith("http"):
             return self.href
-        elif self.href.startswith(
-            ("/", "./", "../")
-        ):  # TODO: Test for ../ more thoroughly
+        elif self.href.startswith(("/", "./", "../")):
             return urljoin(self.origin, self.href)
         else:
             # Catch anchor tags with # or no href
             return None  # TODO: Deal with exceptions better
 
     def check_for_obsolete_attrs(self) -> list[str]:
-        # TODO: Check against the ENUM
-        # Check for obsolete attributes as defined in ObsolteAttrs enum.
-        # Return list of obsolete attributes found.
+        """#TODO Add docstring"""
         self.obsolete_attrs = [
             attr for attr in self.attributes if attr in ObsoleteAttrs.__members__
         ]
