@@ -6,6 +6,7 @@ from pyanchor.filters import (
     filter_for_unsafe_links,
 )
 from pyanchor.parse import PageResults
+from pyanchor.outputs import results_table
 
 check_app = typer.Typer()
 
@@ -34,8 +35,7 @@ def check_url(
         filter_for_http_not_OK(results)
 
     # print results
-    for result in results:
-        typer.echo(result)
+    results_table(results)
 
 
 if __name__ == "__main__":
