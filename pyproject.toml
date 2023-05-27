@@ -1,12 +1,14 @@
 [build-system]
-requires = ["flit_core >=2,<4"]
+requires = ["flit_core >=3.2,<4"]
 build-backend = "flit_core.buildapi"
 
-[tool.flit.metadata]
-module = "pyanchor"
-author = "Ricky White"
-author-email = "ricky@whitelionmedia.com"
-home-page = "https://github.com/EndlessTrax/pyanchor/"
+[project]
+name = "pyanchor"
+version = "1.0.0"
+authors = [{name = "Ricky White", email = "ricky@rickywhite.net"}]
+readme = "README.md"
+license = {file = "LICENSE"}
+description = "Find your broken links, so users don't."
 classifiers = [
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3.7",
@@ -15,19 +17,19 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11"
 ]
-description-file="README.md"
-requires = [
+requires-python=">=3.7"
+dependencies = [
     "beautifulsoup4",
     "requests",
     "typer",
     "lxml",
-    "colorama"
+    "rich"
 ]
-requires-python=">=3.7"
 
-[tool.flit.metadata.urls]
+[project.urls]
+Home = "https://github.com/EndlessTrax/pyanchor/"
 Documentation = "https://github.com/EndlessTrax/pyanchor/blob/master/README.md"
 Issues = "https://github.com/EndlessTrax/pyanchor/issues"
 
-[tool.flit.scripts]
+[project.scripts]
 pyanchor = "pyanchor.cli.main:app"
