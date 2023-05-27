@@ -49,13 +49,15 @@ class AnchorTag:
     def check_for_obsolete_attrs(self) -> list[str]:
         """#TODO Add docstring"""
         self.obsolete_attrs = [
-            attr for attr in self.attributes if attr in ObsoleteAttrs.__members__.values()
+            attr
+            for attr in self.attributes
+            if attr in ObsoleteAttrs.__members__.values()
         ]
         return self.obsolete_attrs
 
     def check_is_unsafe(self) -> bool:
         """#TODO Add docstring"""
         if self.attributes.get("target"):
-            if self.attributes.get("rel") and "noopener" in self.attributes.get("rel"): # type: ignore  # noqa: E501
+            if self.attributes.get("rel") and "noopener" in self.attributes.get("rel"):  # type: ignore  # noqa: E501
                 return True
         return False

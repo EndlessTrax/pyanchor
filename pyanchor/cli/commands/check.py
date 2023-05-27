@@ -5,8 +5,8 @@ from pyanchor.filters import (
     filter_for_obsolete_attrs,
     filter_for_unsafe_links,
 )
-from pyanchor.parse import PageResults
 from pyanchor.outputs import results_table
+from pyanchor.parse import PageResults
 
 check_app = typer.Typer()
 
@@ -22,6 +22,7 @@ def check_url(
         False, "--obsolete", "-o", help="Show unsupported attributes"
     ),
 ):
+
     results = PageResults(url).anchor_tags
 
     # filter results based on options passed in by user

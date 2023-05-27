@@ -5,9 +5,7 @@ from pyanchor.types import AnchorTag
 
 
 def results_table(
-    results: list[AnchorTag], 
-    how_obsolete: bool = False, 
-    show_unsafe: bool = False
+    results: list[AnchorTag], how_obsolete: bool = False, show_unsafe: bool = False
 ):
     table = Table(title="Anchor Status Code Check", show_footer=True)
     table.add_column("Status Code", justify="right", style="cyan", no_wrap=True)

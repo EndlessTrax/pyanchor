@@ -66,7 +66,7 @@ class TestFilters:
                 "/link-1",
             ),
             AnchorTag(
-                '<a href="/link-2" target="_blank" rel="noreferrer noopener">Unsafe Link</a>', # noqa
+                '<a href="/link-2" target="_blank" rel="noreferrer noopener">Unsafe Link</a>',  # noqa
                 {
                     "href": "link-2",
                     "text": "Unsafe Link",
