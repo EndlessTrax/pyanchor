@@ -21,3 +21,13 @@ class PageResults:
             )
             for atag in atags
         ]
+
+
+class SiteMapResults:
+    def __init__(self, url: str):
+        self.url = url
+        self.pages = self.parse_sitemap_for_all_page_urls(url)
+
+    def parse_sitemap_for_all_page_urls(self, url: str) -> list[str]:
+        sitemap = BeautifulSoup(requests.get(url).text, "lxml-xml").find_all("loc")
+        return [url.text for url in sitemap]
