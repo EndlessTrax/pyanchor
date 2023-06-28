@@ -27,7 +27,12 @@ class AnchorTag:
     def __post_init__(self) -> None:
         self.qualified_url = self.build_qualified_url()
         if self.qualified_url:
-            self.status_code = requests.get(self.qualified_url).status_code
+            try:
+                self.status_code = requests.get(
+                    self.qualified_url, allow_redirects=True
+                ).status_code
+            except requests.exceptions.ConnectionError:
+                self.status_code = None
 
     def __str__(self) -> str:
         return f"{self.raw_tag}"
