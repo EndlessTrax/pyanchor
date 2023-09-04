@@ -1,0 +1,22 @@
+name: Lint Python Code
+
+on: 
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - uses: jamescurtin/isort-action@master
+      - uses: psf/black@stable
+      - uses: jpetrucciani/ruff-check@main
