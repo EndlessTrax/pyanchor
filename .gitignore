@@ -134,3 +134,6 @@ dmypy.json
 # IDE Settings
 .vscode
 .idea
+
+# Test output files
+*csv
