@@ -16,13 +16,12 @@ class ObsoleteAttrs(StrEnum):
 
 @dataclass
 class AnchorTag:
-    raw_tag: str
     attributes: dict
-    origin: str
     href: str
-    status_code: Optional[int] = None
+    origin: str
+    raw_tag: str
     obsolete_attrs: Optional[list] = None
-    # TODO: Find out best method for ordering dataclass fields
+    status_code: Optional[int] = None
 
     def __post_init__(self) -> None:
         self.qualified_url = self.build_qualified_url()
@@ -38,7 +37,7 @@ class AnchorTag:
         return f"{self.raw_tag}"
 
     def build_qualified_url(self) -> str or None:
-        """#TODO: Add docstring"""
+        """Build a qualified URL from the origin and href."""
 
         if not self.origin.endswith("/"):
             self.origin = self.origin + "/"
@@ -49,10 +48,10 @@ class AnchorTag:
             return urljoin(self.origin, self.href)
         else:
             # Catch anchor tags with # or no href
-            return None  # TODO: Deal with exceptions better
+            return None
 
     def check_for_obsolete_attrs(self) -> list[str]:
-        """#TODO Add docstring"""
+        """Return a list of obsolete attributes."""
         self.obsolete_attrs = [
             attr
             for attr in self.attributes
@@ -61,7 +60,7 @@ class AnchorTag:
         return self.obsolete_attrs
 
     def check_is_unsafe(self) -> bool:
-        """#TODO Add docstring"""
+        """Return True if the anchor tag is unsafe, False if it is safe."""
         if self.attributes.get("target"):
             if self.attributes.get("rel") and "noopener" in self.attributes.get("rel"):  # type: ignore  # noqa: E501
                 return True
