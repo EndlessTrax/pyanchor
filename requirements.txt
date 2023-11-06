@@ -63,7 +63,7 @@ pytest-cov==3.0.0
     # via -r requirements.in
 python-dotenv==0.20.0
     # via -r requirements.in
-requests==2.28.1
+requests==2.31.0
     # via
     #   -r requirements.in
     #   flit
