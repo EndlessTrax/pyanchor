@@ -1,7 +1,7 @@
 beautifulsoup4==4.11.1
 requests==2.31.0
 typer==0.5.0
-lxml==4.9.2
+lxml==4.9.3
 colorama==0.4.5
 black==22.6.0
 pytest==7.2
@@ -9,3 +9,6 @@ pytest-cov==3.0.0
 python-dotenv==0.20.0
 flask==2.2.5
 flit==3.7.1
+
+exceptiongroup # Required for pytest to run on Python < 3.10
+typing_extensions==3.10.0.0 # Required for Black to run on Python < 3.10
