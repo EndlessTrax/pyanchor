@@ -9,3 +9,6 @@ pytest-cov==3.0.0
 python-dotenv==0.20.0
 flask==2.2.5
 flit==3.7.1
+
+exceptiongroup # Required for pytest to run on Python < 3.10
+typing_extensions==3.10.0.0 # Required for Black to run on Python < 3.10
