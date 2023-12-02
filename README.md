@@ -132,7 +132,6 @@ to a charity close to my heart, [Walk AS One](https://walkasone.org/donate/).
 And if you would prefer to donate to me personally instead,
 [you can sponsor me on Github](https://github.com/sponsors/EndlessTrax)? 🤓
 
-
 ## How to Contribute
 
 Please **raise an issue** before making a PR, so that the issue and implementation can be discussed before you write any code. **This will save you time**, and increase the chances of your PR being merged without significant changes. 

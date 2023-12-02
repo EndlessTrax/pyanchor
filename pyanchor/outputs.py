@@ -1,3 +1,6 @@
+import csv
+from pathlib import Path
+
 from rich.console import Console
 from rich.table import Table
 
@@ -5,9 +8,10 @@ from pyanchor.types import AnchorTag
 
 
 def results_table(
-    results: list[AnchorTag], how_obsolete: bool = False, show_unsafe: bool = False
+    results: list[AnchorTag], show_obsolete: bool = False, show_unsafe: bool = False
 ):
-    table = Table(title="Anchor Status Code Check", show_footer=True)
+    """TODO: Add docstring"""
+    table = Table(title="Results")
     table.add_column("Status Code", justify="right", style="cyan", no_wrap=True)
     table.add_column("Href", style="magenta")
     table.add_column("Origin", style="green")
@@ -21,3 +25,23 @@ def results_table(
 
     console = Console()
     console.print(table)
+
+
+def results_to_csv(
+    filename: Path,
+    results: list[AnchorTag],
+    show_obsolete: bool = False,
+    show_unsafe: bool = False,
+):
+    """TODO: Add docstring"""
+    with open(filename, "w") as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(["Status Code", "Href", "Origin"])
+        for anchor_tag in results:
+            writer.writerow(
+                [
+                    str(anchor_tag.status_code),
+                    anchor_tag.href,
+                    anchor_tag.origin,
+                ]
+            )
