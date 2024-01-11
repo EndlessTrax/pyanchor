@@ -11,7 +11,7 @@ attrs==23.1.0 \
 beautifulsoup4==4.11.1 \
     --hash=sha256:58d5c3d29f5a36ffeb94f02f0d786cd53014cf9b3b3951d42e0080d8a9498d30 \
     --hash=sha256:ad9aa55b65ef2808eb405f46cf74df7fcb7044d5cbc26487f96eb2ef2e436693
-    # via -r .\requirements.in
+    # via -r requirements.in
 black==22.6.0 \
     --hash=sha256:074458dc2f6e0d3dab7928d4417bb6957bb834434516f21514138437accdbe90 \
     --hash=sha256:187d96c5e713f441a5829e77120c269b6514418f4513a390b0499b0987f2ff1c \
@@ -36,7 +36,7 @@ black==22.6.0 \
     --hash=sha256:e439798f819d49ba1c0bd9664427a05aab79bfba777a6db94fd4e56fae0cb849 \
     --hash=sha256:f586c26118bc6e714ec58c09df0157fe2d9ee195c764f630eb0d8e7ccce72e69 \
     --hash=sha256:f6fe02afde060bbeef044af7996f335fbe90b039ccf3f5eb8f16df8b20f77666
-    # via -r .\requirements.in
+    # via -r requirements.in
 certifi==2023.7.22 \
     --hash=sha256:539cc1d13202e33ca466e88b2807e29f4c13049d6d87031a3c110744495cb082 \
     --hash=sha256:92d6037539857d8206b8f6ae472e8b77db8058fec5937a1ef3f54304089edbb9
@@ -143,10 +143,7 @@ click==8.1.7 \
 colorama==0.4.5 \
     --hash=sha256:854bf444933e37f5824ae7bfc1e98d5bce2ebe4160d46b5edf346a89358e99da \
     --hash=sha256:e6c6b4334fc50988a639d9b98aa429a0b57da6e17b9a44f0451f930b6967b7a4
-    # via
-    #   -r .\requirements.in
-    #   click
-    #   pytest
+    # via -r requirements.in
 coverage[toml]==7.3.2 \
     --hash=sha256:0cbf38419fb1a347aaf63481c00f0bdc86889d9fbf3f25109cf96c26b403fda1 \
     --hash=sha256:12d15ab5833a997716d76f2ac1e4b4d536814fc213c85ca72756c19e5a6b3d63 \
@@ -210,15 +207,15 @@ docutils==0.20.1 \
 exceptiongroup==1.1.3 \
     --hash=sha256:097acd85d473d75af5bb98e41b61ff7fe35efe6675e4f9370ec6ec5126d160e9 \
     --hash=sha256:343280667a4585d195ca1cf9cef84a4e178c4b6cf2274caef9859782b567d5e3
-    # via -r .\requirements.in
+    # via -r requirements.in
 flask==2.2.5 \
     --hash=sha256:58107ed83443e86067e41eff4631b058178191a355886f8e479e347fa1285fdf \
     --hash=sha256:edee9b0a7ff26621bd5a8c10ff484ae28737a2410d99b0bb9a6850c7fb977aa0
-    # via -r .\requirements.in
+    # via -r requirements.in
 flit==3.7.1 \
     --hash=sha256:06a93a6737fa9380ba85fe8d7f28efb6c93c4f4ee9c7d00cc3375a81f33b91a4 \
     --hash=sha256:3c9bd9c140515bfe62dd938c6610d10d6efb9e35cc647fc614fe5fb3a5036682
-    # via -r .\requirements.in
+    # via -r requirements.in
 flit-core==3.9.0 \
     --hash=sha256:72ad266176c4a3fcfab5f2930d76896059851240570ce9a98733b658cb786eba \
     --hash=sha256:7aada352fb0c7f5538c4fafeddf314d3a6a92ee8e2b1de70482329e42de70301
@@ -235,9 +232,9 @@ itsdangerous==2.1.2 \
     --hash=sha256:2c2349112351b88699d8d4b6b075022c0808887cb7ad10069318a8b0bc88db44 \
     --hash=sha256:5dbbc68b317e5e42f327f9021763545dc3fc3bfe22e6deb96aaf1fc38874156a
     # via flask
-jinja2==3.1.2 \
-    --hash=sha256:31351a702a408a9e7595a8fc6150fc3f43bb6bf7e319770cbc0db9df9437e852 \
-    --hash=sha256:6088930bfe239f0e6710546ab9c19c9ef35e29792895fed6e6e31a023a182a61
+jinja2==3.1.3 \
+    --hash=sha256:7d6d50dd97d52cbc355597bd845fabfbac3f551e1f99619e39a35ce8c370b5fa \
+    --hash=sha256:ac8bd6544d4bb2c9792bf3a159e80bba8fda7f07e81bc3aed565432d5925ba90
     # via flask
 lxml==4.9.3 \
     --hash=sha256:05186a0f1346ae12553d66df1cfce6f251589fea3ad3da4f3ef4e34b2d58c6a3 \
@@ -332,7 +329,7 @@ lxml==4.9.3 \
     --hash=sha256:fc9b106a1bf918db68619fdcd6d5ad4f972fdd19c01d19bdb6bf63f3589a9ec5 \
     --hash=sha256:fcdd00edfd0a3001e0181eab3e63bd5c74ad3e67152c84f93f13769a40e073a7 \
     --hash=sha256:fe4bda6bd4340caa6e5cf95e73f8fea5c4bfc55763dd42f1b50a94c1b4a2fbd4
-    # via -r .\requirements.in
+    # via -r requirements.in
 markupsafe==2.1.3 \
     --hash=sha256:05fb21170423db021895e1ea1e1f3ab3adb85d1c2333cbc2310f2a26bc77272e \
     --hash=sha256:0a4e4a1aff6c7ac4cd55792abf96c915634c2b97e3cc1c7129578aa68ebd754e \
@@ -421,21 +418,21 @@ pytest==7.2.0 \
     --hash=sha256:892f933d339f068883b6fd5a459f03d85bfcb355e4981e146d2c7616c21fef71 \
     --hash=sha256:c4014eb40e10f11f355ad4e3c2fb2c6c6d1919c73f3b5a433de4708202cade59
     # via
-    #   -r .\requirements.in
+    #   -r requirements.in
     #   pytest-cov
 pytest-cov==3.0.0 \
     --hash=sha256:578d5d15ac4a25e5f961c938b85a05b09fdaae9deef3bb6de9a6e766622ca7a6 \
     --hash=sha256:e7f0f5b1617d2210a2cabc266dfe2f4c75a8d32fb89eafb7ad9d06f6d076d470
-    # via -r .\requirements.in
+    # via -r requirements.in
 python-dotenv==0.20.0 \
     --hash=sha256:b7e3b04a59693c42c36f9ab1cc2acc46fa5df8c78e178fc33a8d4cd05c8d498f \
     --hash=sha256:d92a187be61fe482e4fd675b6d52200e7be63a12b724abbf931a40ce4fa92938
-    # via -r .\requirements.in
+    # via -r requirements.in
 requests==2.31.0 \
     --hash=sha256:58cd2187c01e70e6e26505bca751777aa9f2ee0b7f4300988b709f44e013003f \
     --hash=sha256:942c5a758f98d790eaed1a29cb6eefc7ffb0d1cf7af05c3d2791656dbd6ad1e1
     # via
-    #   -r .\requirements.in
+    #   -r requirements.in
     #   flit
 soupsieve==2.5 \
     --hash=sha256:5663d5a7b3bfaeee0bc4372e7fc48f9cff4940b3eec54a6451cc5299f1097690 \
@@ -452,12 +449,12 @@ tomli-w==1.0.0 \
 typer==0.5.0 \
     --hash=sha256:4c285a5585c94d32c305444af934f0078b6a8ba91464f3f85807c91cd499d195 \
     --hash=sha256:a34409c0029ba7e48cb9e4f54c6400bf4158a6145b5dea32788e7a36ebbcb312
-    # via -r .\requirements.in
+    # via -r requirements.in
 typing-extensions==3.10.0.0 \
     --hash=sha256:0ac0f89795dd19de6b97debb0c6af1c70987fd80a2d62d1958f7e56fcc31b497 \
     --hash=sha256:50b6f157849174217d0656f99dc82fe932884fb250826c18350e159ec6cdf342 \
     --hash=sha256:779383f6086d90c99ae41cf0ff39aac8a7937a9283ce0a414e5dd782f4c94a84
-    # via -r .\requirements.in
+    # via -r requirements.in
 urllib3==2.0.7 \
     --hash=sha256:c97dfde1f7bd43a71c8d2a58e369e9b2bf692d1334ea9f9cae55add7d0dd0f84 \
     --hash=sha256:fdb6d215c776278489906c2f8916e6e7d4f5a9b602ccbcfdf7f016fc8da0596e
