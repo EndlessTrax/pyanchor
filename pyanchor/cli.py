@@ -2,6 +2,7 @@ import typer
 import requests
 from bs4 import BeautifulSoup
 from pyanchor.link_checker import LinkResults
+import csv
 
 
 app = typer.Typer()
@@ -43,6 +44,21 @@ def print_totals(success: int, failed: int):
     typer.echo(f"FAILED: {failed}")
 
 
+def write_results_to_csv(links: dict, file_path: str):
+    """Writes results to a CSV file
+
+    Args:
+        links: Dictionary of links from LinkResults.results
+        file_path: Path to the CSV file
+    """
+    with open(file_path, mode='w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(["HTTP Code", "URL"])
+        for http_code, url_list in links.items():
+            for url in url_list:
+                writer.writerow([http_code, url])
+
+
 @app.command()
 def main(
     url: str,
@@ -53,6 +69,11 @@ def main(
         False,
         "--verbose",
         help="By default all 200 responses will be hidden from the final output. Use verbose to view ALL results",
+    ),
+    output_csv: str = typer.Option(
+        None,
+        "--output-csv",
+        help="Path to the CSV file where results will be saved",
     ),
 ):
     """Check for broken links on any given web page. Pass in a sitemap URL to
@@ -93,6 +114,8 @@ def main(
 
     print_totals(success_totals, failed_totals)
 
+    if output_csv:
+        write_results_to_csv(results, output_csv)
 
 if __name__ == "__main__":
     app()
