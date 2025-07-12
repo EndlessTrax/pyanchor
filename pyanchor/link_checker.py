@@ -23,6 +23,7 @@ checked for obsolote attributes.
 
 import requests
 from bs4 import BeautifulSoup
+from typing import Optional
 
 
 class AllTags:
@@ -54,7 +55,7 @@ class LinkResults(AllTags):
         super().__init__(url)
         self.results = self.build_results_dictionary()
 
-    def check_link_for_http_scheme(self, href: str) -> str | None:
+    def check_link_for_http_scheme(self, href: str) -> Optional[str]:
         """Checks a link for http scheme.
         
         If a qualified URL, nothing is done. If a relative link, then a full URL 
