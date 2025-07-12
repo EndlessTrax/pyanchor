@@ -8,7 +8,7 @@ import csv
 app = typer.Typer()
 
 
-def print_results(links: dict, verbose: bool) -> int:
+def print_results(links: dict, verbose: bool) -> tuple:
     """Simple utility function to print to terminal
     
     Args:
@@ -89,7 +89,7 @@ def main(
 
         r = requests.get(url)
         if r.status_code == 200:
-            soup = BeautifulSoup(r.content, "lxml")
+            soup = BeautifulSoup(r.content, features="xml")
             sitemap_links = soup.find_all("loc")
 
             for sitemap_link in sitemap_links:
