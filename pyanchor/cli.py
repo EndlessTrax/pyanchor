@@ -89,7 +89,7 @@ def main(
 
         r = requests.get(url)
         if r.status_code == 200:
-            soup = BeautifulSoup(r.content, features="xml")
+            soup = BeautifulSoup(r.content, features="lxml-xml")
             sitemap_links = soup.find_all("loc")
 
             for sitemap_link in sitemap_links:
