@@ -137,7 +137,7 @@ and use the appropriate label.
 
 ## Support
 
-If you would like to show your support for the project, [you can sponsor me on Github](https://github.com/sponsors/EndlessTrax)? 🤓
+If you would like to show your support for the project, [you can sponsor me on GitHub](https://github.com/sponsors/EndlessTrax)? 🤓
 
 ## How to Contribute
 
