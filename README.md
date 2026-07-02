@@ -11,10 +11,9 @@ into your development workflow so that users never see a 404 in the first place.
 
 ## Install
 
-> Requires Python 3.8 and above.
+> Requires Python 3.10 and above.
 
-It is recommended that you install this package in a virtual or isoloated environment. The easiest way to do this 
-is with pipx.
+It is recommended that you install this package in a virtual or isolated environment. The easiest way to do this is with pipx.
 
 ```shell
 pipx install pyanchor
@@ -56,8 +55,7 @@ pyanchor https://mysite.com/
 
 ![Example Gif](/assets/example-single-page.gif)
 
-If you want to check all links on a website, and not just a single page, a `sitemap.xml` URL may be provided and 
-flagged with `--sitemap`.
+If you want to check all links on a website, and not just a single page, a `sitemap.xml` URL may be provided and flagged with `--sitemap`.
 
 Example:
 
@@ -73,6 +71,7 @@ response add the `--verbose` flag.
 ```shell 
 pyanchor https://mysite.com --verbose
 ```
+
 ![Example Gif](/assets/example-single-page-verbose.gif)
 
 ```shell
@@ -138,8 +137,7 @@ and use the appropriate label.
 
 ## Support
 
-If you would like to show your support for the project, 
-[you can sponsor me on Github](https://github.com/sponsors/EndlessTrax)? 🤓
+If you would like to show your support for the project, [you can sponsor me on Github](https://github.com/sponsors/EndlessTrax)? 🤓
 
 ## How to Contribute
 
