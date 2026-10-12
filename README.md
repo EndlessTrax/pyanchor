@@ -1,3 +1,10 @@
+> [!IMPORTANT]
+> **This project is archived and no longer maintained.**
+>
+> This repository is preserved for reference. No further features, bug fixes, security updates, or compatibility updates are planned.
+>
+> The source code remains available under its existing license. Use at your own discretion.
+
 # PyAnchor
 
 [![PyPI version](https://badge.fury.io/py/pyanchor.svg)](https://badge.fury.io/py/pyanchor)
